@@ -1,5 +1,5 @@
 // // Axios
-// import { common, auth } from './api.js';
+// import { common, auth } from './api';
 // // Swal
 // import Swal from 'sweetalert2';
 

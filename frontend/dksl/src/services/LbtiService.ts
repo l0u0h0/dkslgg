@@ -1,5 +1,5 @@
 // Axios
-import { common, auth } from './api.js';
+import { common, auth } from './api';
 
 const getQuestionList = async () => {
   try {

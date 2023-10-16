@@ -28,7 +28,7 @@ const UserContainer = () => {
     email: '',
   });
 
-  const [path, setPath] = useState(null);
+  const [path, setPath] = useState<string | null>(null);
   const url = useLocation();
 
   const auth = useAuth();
@@ -47,7 +47,7 @@ const UserContainer = () => {
       return;
     }
     const data = await register({clientId: signup.clientId, password: signup.password, name: signup.name, phone: signup.phone, email:signup.email});
-    if (data.status == 200) {
+    if (data != undefined && data.status == 200) {
       Swal.fire({
         title: '알림',
         text: '회원가입에 성공하셨습니다.',
@@ -61,7 +61,7 @@ const UserContainer = () => {
 
   const onSignin = useCallback(async () => {
     const data = await signIn(signin);
-    if (data.status == 200) {
+    if (data != undefined && data.status == 200) {
       await updateAuth();
       Swal.fire({
         title: '알림',
