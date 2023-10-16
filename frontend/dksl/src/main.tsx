@@ -8,7 +8,7 @@ import { Provider } from 'jotai';
 // Component
 import ErrorComponent from './components/common/ErrorComponent.jsx';
 // Container
-import MainContainer from './pages/MainContainer.jsx';
+import MainContainer from './pages/MainContainer';
 import UserContainer from './pages/UserContainer.jsx';
 import RecordContainer from './pages/RecordContainer.jsx';
 import GroupContainer from './pages/GroupContainer.jsx';
@@ -30,11 +30,11 @@ const router = createBrowserRouter([
   { path: '*', element: <NotFound /> },
 ]);
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <ErrorBoundary FallbackComponent={ErrorComponent}>
     <Provider>
       <React.StrictMode>
-        <Suspense fallback={<LoadingComponent />}>
+        <Suspense fallback={<LoadingComponent white={false} />}>
           <GlobalStyles />
           <RouterProvider router={router} />
         </Suspense>

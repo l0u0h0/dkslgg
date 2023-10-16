@@ -1,5 +1,5 @@
 // Axios
-import { common, auth } from './api.js';
+import { common, auth } from './api';
 
 const getQuestionList = async () => {
   try {
@@ -10,7 +10,7 @@ const getQuestionList = async () => {
     console.log(error);
   }
 };
-const getLbti = async (data, hasToken) => {
+const getLbti = async (data: [], hasToken: boolean) => {
   try {
     if (hasToken) {
     const response = await auth.post('/lbti', JSON.stringify(data));

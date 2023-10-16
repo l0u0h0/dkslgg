@@ -202,7 +202,7 @@ const GroupContainer = () => {
       />
     </>
   ) : (
-    <LoadingComponent />
+    <LoadingComponent white={false} />
   );
 };
 

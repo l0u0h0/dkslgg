@@ -1,5 +1,5 @@
 // Axios
-import { record, common } from './api.js';
+import { record, common } from './api';
 
 const getRankData = async () => {
   try {

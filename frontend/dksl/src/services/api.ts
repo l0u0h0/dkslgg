@@ -36,9 +36,9 @@ auth.interceptors.request.use(
     } else {
       if (refresh) {
         const response = await reAccessToken(refresh);
-        if (response.status == 200) {
-          sessionStorage.setItem('accessToken', response);
-          config.headers.Authorization = `Bearer ${response}`;
+        if (response != undefined && response.status == 200) {
+          sessionStorage.setItem('accessToken', response.data);
+          config.headers.Authorization = `Bearer ${response.data}`;
         } else {
           Swal.fire('이런!', '재로그인이 필요합니다', 'warning');
         }

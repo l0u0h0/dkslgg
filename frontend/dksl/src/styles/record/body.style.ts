@@ -38,7 +38,7 @@ export const TabLayout = styled.div`
   }
 `;
 
-export const TabItem = styled.button`
+export const TabItem = styled.button<{ $istab: number }>`
   width: 100%;
   height: 6vh;
   margin: 0.25rem;

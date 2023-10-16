@@ -109,7 +109,7 @@ const RecordContainer = () => {
     }
   }, [summoner, setGroup, setRecord, setAnalyze]);
 
-  const getByteToImage = useCallback((imgSrc) => {
+  const getByteToImage = useCallback((imgSrc: string) => {
     const binaryString = atob(imgSrc);
     const bytes = new Uint8Array(binaryString.length);
 
@@ -124,7 +124,7 @@ const RecordContainer = () => {
     return URL.createObjectURL(img);
   }, []);
 
-  const leaveTeam = useCallback(async (name) => {
+  const leaveTeam = useCallback(async (name: string) => {
     const result = await groupLeave(name);
 
     if (result) {
@@ -149,7 +149,6 @@ const RecordContainer = () => {
         getByteToImage={getByteToImage}
         fetchChampData={fetchChampData}
         searchSummonerName={summoner}
-        // lbti={lbti}
       />
     </>
   );

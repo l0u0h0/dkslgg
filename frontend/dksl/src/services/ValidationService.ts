@@ -1,4 +1,4 @@
-const emailVaildationCheck = (email) => {
+const emailVaildationCheck = (email: string) => {
   // email Checking
   const regexEmail = new RegExp(
     // eslint-disable-next-line no-useless-escape
@@ -10,7 +10,7 @@ const emailVaildationCheck = (email) => {
   return true;
 };
 
-const pwValidationCheck = (password) => {
+const pwValidationCheck = (password: string) => {
   // pw Checking
   const regexPw = new RegExp(
     /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,15}$/
@@ -22,7 +22,7 @@ const pwValidationCheck = (password) => {
   return true;
 };
 
-const pwEqualValidationCheck = (pw, pwCheck) => {
+const pwEqualValidationCheck = (pw: string, pwCheck: string) => {
   // pw Checking
   if (pwCheck.length == 0 || pwCheck.length == 0 || pw != pwCheck) {
     return false;
@@ -30,7 +30,7 @@ const pwEqualValidationCheck = (pw, pwCheck) => {
   return true;
 };
 
-const nameValidationCheck = (name) => {
+const nameValidationCheck = (name: string) => {
   // name Checking
   if (name.length == 0) {
     return false;
@@ -38,7 +38,7 @@ const nameValidationCheck = (name) => {
   return true;
 };
 
-const idValidationCheck = (clientId) => {
+const idValidationCheck = (clientId: string) => {
   // ID Checking
   const regexId = new RegExp(/^[0-9a-zA-Z_]{3,20}$/);
 
@@ -48,7 +48,7 @@ const idValidationCheck = (clientId) => {
   return true;
 };
 
-const phoneValidationCheck = (phone) => {
+const phoneValidationCheck = (phone: string) => {
   // phoneNumber formatting & Checking
   const numArr = phone.split('');
   const regexPhone = new RegExp(/^\d{3}-\d{3,4}-\d{4}$/);
@@ -64,7 +64,7 @@ const phoneValidationCheck = (phone) => {
   return true;
 };
 
-const userValidationCheck = (user) => {
+const userValidationCheck = (user: IValidationUser) => {
   // name Checking
   const name = user.name;
 

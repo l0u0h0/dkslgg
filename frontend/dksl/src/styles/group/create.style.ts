@@ -103,7 +103,7 @@ export const CreateLayout = styled.div`
   }
 `;
 
-export const LabelForFile = styled.label.attrs((props) => ({
+export const LabelForFile = styled.label.attrs<ILabelForFile>((props) => ({
   htmlFor: props.$for,
 }))`
   width: 100%;

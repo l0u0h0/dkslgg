@@ -3,9 +3,9 @@ import { useRef, useEffect, useState } from 'react';
 // Styled
 import * as S from '@/styles/record/tabreview.style';
 // Componnet
-import LoadingComponent from '../../common/LoadingComponent';
+import LoadingComponent from '../../common/LoadingComponent.js';
 import { common, auth } from '../../../services/api.js';
-import { getMember } from '../../../services/UserService';
+import { getMember } from '../../../services/UserService.js';
 
 const TabReviewComponent = ({ evaluateeName, onSetEvaluation }) => {
   const search = useRef();

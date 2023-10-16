@@ -1,10 +1,11 @@
 // User API (Axios)
+import axios from 'axios';
 import { auth, common } from './api';
 // Swal
 import Swal from 'sweetalert2';
 
 // 회원가입 API
-const register = async (data) => {
+const register = async (data: ISignupUser) => {
   try {
     const response = await common.post(
       '/member/register',
@@ -13,12 +14,16 @@ const register = async (data) => {
 
     return response;
   } catch (error) {
-    Swal.fire('Error', error.response.data, 'error');
+    if (axios.isAxiosError(error) && error.response) {
+      Swal.fire('Error', error.response.data, 'error');
+    } else {
+      console.error(error);
+    }
   }
 };
 
 // 로그인 API
-const signIn = async (data) => {
+const signIn = async (data: ISigninUser) => {
   try {
     const response = await common.post('/member/login', JSON.stringify(data));
 
@@ -29,7 +34,11 @@ const signIn = async (data) => {
 
     return response;
   } catch (error) {
-    Swal.fire('Error', error.response.data, 'error');
+    if (axios.isAxiosError(error) && error.response) {
+      Swal.fire('Error', error.response.data, 'error');
+    } else {
+      console.error(error);
+    }
   }
 };
 
@@ -45,7 +54,11 @@ const signout = async () => {
 
     return response;
   } catch (error) {
-    Swal.fire('Error', error.response.data, 'error');
+    if (axios.isAxiosError(error) && error.response) {
+      Swal.fire('Error', error.response.data, 'error');
+    } else {
+      console.error(error);
+    }
   }
 };
 
@@ -55,13 +68,17 @@ const getMember = async () => {
     const response = await auth.get('/member');
     return response;
   } catch (error) {
-    console.log(error.response);
+    if (axios.isAxiosError(error) && error.response) {
+      console.error(error.response);
+    } else {
+      console.error(error);
+    }
     sessionStorage.removeItem('accessToken');
   }
 };
 
 // Access 만료 시 재요청 토큰
-const reAccessToken = async (refreshToken) => {
+const reAccessToken = async (refreshToken: string) => {
   try {
     const response = await common.get('/member/reissue', {
       headers: {
@@ -71,7 +88,11 @@ const reAccessToken = async (refreshToken) => {
     if (response.status != 200) throw new Error('토큰 재발급 실패');
     return response;
   } catch (error) {
-    console.log(error.response);
+    if (axios.isAxiosError(error) && error.response) {
+      console.error(error.response);
+    } else {
+      console.error(error);
+    }
     localStorage.removeItem('refreshToken');
   }
 };

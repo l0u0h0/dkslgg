@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const LoadingLayout = styled.section`
+export const LoadingLayout = styled.section<{ $white: boolean }>`
   width: 100%;
   min-height: 40vh;
   height: 100%;
