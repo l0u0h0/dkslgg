@@ -4,6 +4,8 @@
 
 1. ### pnpm 설치 안되어있을 시
 
+- ~~pnpm이 없다면 npm으로 서버 구동해도 무방~~
+
 > `npm install -g pnpm` 선행
 
 - ### window에서 사용 시 이런 오류가 발생한다면
@@ -12,8 +14,8 @@
 > Policies(https://go.microsoft.com/fwlink/?LinkID=135170)를 참조하십시오.
 > 위치 줄:1 문자:1
 > +pnpm
-> +
-> +CategoryInfo : 보안 오류: (:) PSSecurityExcep
+>
+> - +CategoryInfo : 보안 오류: (:) PSSecurityExcep
 
 1. windows PowerShell을 관리자 권한으로 실행
 2. Get-ExecutionPolicy 명령어 사용해 본인의 권한 상태 확인
@@ -21,7 +23,6 @@
 4. Get-ExecutionPolicy 를 다시 사용하면 RemoteSigned로 변경 화인
 
 - [링크 참조](https://velog.io/@ariel1031/Next.js-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0)
-
 
 2. ### node_modules 디렉토리가 루트에 없을 시
 
@@ -37,16 +38,14 @@
 
 5. ### 테스트 코드 실행해볼 때
 
-> `pnpm test` 커맨드를 실행  
-
-
+> `pnpm test` 커맨드를 실행
 
 ## 프로젝트 구조
 
 - `config` : jest 포맷팅 설정파일
 - `src/pages` : 하나의 라우트, (하나의 페이지)를 담당하는 컴포넌트. 컨테이너에서 데이터 요청 로직 구현
 - `src/components` : 컨테이너를 구성하는 기능 단위의 컴포넌트들.
-UI나 데이터 가공 및 처리와 UI는 여기서 담당.
+  UI나 데이터 가공 및 처리와 UI는 여기서 담당.
 - `src/jotai` : Jotai 상태관리 로직 구현한 파일들 모아놓는 디렉
 - `src/services` : API 요청 및 Jotai를 활용한 데이터 가공 등 데이터 처리에 대한 로직 들 모으자!
 - `src/__mocks__` : svgr 목업을 위한 파일
@@ -103,9 +102,9 @@ UI나 데이터 가공 및 처리와 UI는 여기서 담당.
  ┣ 📜pnpm-lock.yaml
  ┣ 📜README.md
  ┗ 📜vite.config.js
- ```
+```
 
- ---
+---
 
 ## package.json
 
