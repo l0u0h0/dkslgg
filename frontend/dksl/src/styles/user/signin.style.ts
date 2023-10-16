@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const SigninLayout = styled.div`
+export const SigninLayout = styled.div<{ $bgnum: number }>`
   width: 100%;
   height: 100vh;
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
