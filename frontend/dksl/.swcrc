@@ -2,7 +2,7 @@
   "jsc": {
     "target": "es2016",
     "parser": {
-      "syntax": "ecmascript",
+      "syntax": "typescript",
       "jsx": true,
       "decorators": false,
       "dynamicImport": false
@@ -27,5 +27,6 @@
     "strictMode": true,
     "lazy": false,
     "noInterop": false
-  }
+  },
+  "exclude": ["./src/**/.*.spec.ts$", "./**/.*.js$"]
 }

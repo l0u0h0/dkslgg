@@ -1,38 +1,48 @@
 # FrontEnd README
 
 ## 개발 서버 구동 방법
+
 1. ### pnpm 설치 안되어있을 시
+
 > `npm install -g pnpm` 선행
 
 - ### window에서 사용 시 이런 오류가 발생한다면
+
 > pnpm : 이 시스템에서 스크립트를 실행할 수 없으므로 파일을 로드할 수 없습니다. 자세한 내용은 aboutExecution
 > Policies(https://go.microsoft.com/fwlink/?LinkID=135170)를 참조하십시오.
 > 위치 줄:1 문자:1
 > +pnpm
 > +
 > +CategoryInfo : 보안 오류: (:) PSSecurityExcep
+
 1. windows PowerShell을 관리자 권한으로 실행
 2. Get-ExecutionPolicy 명령어 사용해 본인의 권한 상태 확인
 3. 권한이 RemoteSigned가 아니라면 Set-ExecutionPolicy RemoteSigned 를 입력
 4. Get-ExecutionPolicy 를 다시 사용하면 RemoteSigned로 변경 화인
+
 - [링크 참조](https://velog.io/@ariel1031/Next.js-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0)
 
 
 2. ### node_modules 디렉토리가 루트에 없을 시
+
 > `pnpm install` 선행
 
 3. ### 리액트 개발 서버 띄우기
+
 > 루트 디렉토리로 이동한 후 `pnpm dev` 실행
 
 4. ### 개발 서버 종료 시
+
 > 커맨드 창에 q를 지그시 눌러주기
 
 5. ### 테스트 코드 실행해볼 때
+
 > `pnpm test` 커맨드를 실행  
 
 
 
 ## 프로젝트 구조
+
 - `config` : jest 포맷팅 설정파일
 - `src/pages` : 하나의 라우트, (하나의 페이지)를 담당하는 컴포넌트. 컨테이너에서 데이터 요청 로직 구현
 - `src/components` : 컨테이너를 구성하는 기능 단위의 컴포넌트들.
@@ -98,6 +108,7 @@ UI나 데이터 가공 및 처리와 UI는 여기서 담당.
  ---
 
 ## package.json
+
 ```JSON
 {
   "name": "dksl",
