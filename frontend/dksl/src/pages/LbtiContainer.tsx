@@ -73,7 +73,7 @@ const LbtiContainer = () => {
       <LbtiMainComponent />
     </>
   ) : (
-    <LoadingComponent />
+    <LoadingComponent white={false} />
   );
 };
 

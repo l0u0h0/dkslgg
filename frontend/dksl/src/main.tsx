@@ -30,11 +30,11 @@ const router = createBrowserRouter([
   { path: '*', element: <NotFound /> },
 ]);
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <ErrorBoundary FallbackComponent={ErrorComponent}>
     <Provider>
       <React.StrictMode>
-        <Suspense fallback={<LoadingComponent />}>
+        <Suspense fallback={<LoadingComponent white={false} />}>
           <GlobalStyles />
           <RouterProvider router={router} />
         </Suspense>

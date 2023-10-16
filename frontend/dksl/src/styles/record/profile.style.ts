@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const ProfileLayout = styled.div`
+export const ProfileLayout = styled.div<{ $bgnum: number }>`
   width: 100%;
   height: 48vh;
   margin-top: 8vh;

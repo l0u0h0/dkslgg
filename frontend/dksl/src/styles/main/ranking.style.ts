@@ -26,7 +26,7 @@ export const TabBox = styled.div`
   justify-content: space-between;
 `;
 
-export const TabItem = styled.button`
+export const TabItem = styled.button<{ $istab: number }>`
   width: 100%;
   margin: 2px;
   font-size: medium;

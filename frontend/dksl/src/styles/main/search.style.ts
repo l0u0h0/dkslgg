@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const SearchLayout = styled.div`
+export const SearchLayout = styled.div<{ $bgnum: number }>`
   width: 100%;
   height: 70vh;
   margin-top: 12.5vh;

@@ -75,7 +75,7 @@ export const AnalyzeCard = styled.div`
   }
 `;
 
-export const TagItem = styled.div`
+export const TagItem = styled.div<{ $bg: string }>`
   ${Tag};
   width: 20%;
   font-size: small;

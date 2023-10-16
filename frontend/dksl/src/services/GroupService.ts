@@ -1,4 +1,5 @@
 // Axios
+import axios from 'axios';
 import { common, auth } from './api.js';
 // Swal
 import Swal from 'sweetalert2';
@@ -13,7 +14,7 @@ const getGroupList = async () => {
   }
 };
 
-const setNewGroup = async (formData) => {
+const setNewGroup = async (formData: FormData) => {
   try {
     const response = await auth.post('/team/create', formData, {
       headers: {
@@ -25,21 +26,29 @@ const setNewGroup = async (formData) => {
 
     return response;
   } catch (error) {
-    Swal.fire('Error', error.response.data, 'error');
+    if (axios.isAxiosError(error) && error.response) {
+      Swal.fire('Error', error.response.data, 'error');
+    } else {
+      console.error(error);
+    }
   }
 };
 
-const searchGroup = async (word) => {
+const searchGroup = async (word: string) => {
   try {
     const response = await common.get(`/team/search?word=${word}`);
 
     return response;
   } catch (error) {
-    Swal.fire('Error', error.response.data, 'error');
+    if (axios.isAxiosError(error) && error.response) {
+      Swal.fire('Error', error.response.data, 'error');
+    } else {
+      console.error(error);
+    }
   }
 };
 
-const groupDetail = async (name, hasToken) => {
+const groupDetail = async (name: string, hasToken: boolean) => {
   console.log('service in : ', name, hasToken);
   try {
     if (hasToken) {
@@ -50,34 +59,50 @@ const groupDetail = async (name, hasToken) => {
       return response;
     }
   } catch (error) {
-    Swal.fire('Error', error.response.data, 'error');
+    if (axios.isAxiosError(error) && error.response) {
+      Swal.fire('Error', error.response.data, 'error');
+    } else {
+      console.error(error);
+    }
   }
 };
 
-const joinGroup = async (data) => {
+const joinGroup = async (data: string) => {
   try {
     const response = await auth.post('/team/join', JSON.stringify(data));
     return response.data;
   } catch (error) {
-    Swal.fire('Error', error.response.data, 'error');
+    if (axios.isAxiosError(error) && error.response) {
+      Swal.fire('Error', error.response.data, 'error');
+    } else {
+      console.error(error);
+    }
   }
 };
 
-const groupLeave = async (name) => {
+const groupLeave = async (name: string) => {
   try {
     const response = await auth.post('/team/leave', JSON.stringify(name));
     return response.data;
   } catch (error) {
-    Swal.fire('Error', error.response.data, 'error');
+    if (axios.isAxiosError(error) && error.response) {
+      Swal.fire('Error', error.response.data, 'error');
+    } else {
+      console.error(error);
+    }
   }
 }
 
-const getSummonerGroup = async (name) => {
+const getSummonerGroup = async (name: string) => {
   try {
     const response = await common.get(`/summoner/team/${name}`);
     return response;
   } catch (error) {
-    console.error(error.response.data);
+    if (axios.isAxiosError(error) && error.response) {
+      console.error(error.response.data);
+    } else {
+      console.error(error);
+    }
     return 'NoData';
   }
 }

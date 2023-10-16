@@ -261,7 +261,7 @@ export const RecentCard = styled.div`
   }
 `;
 
-export const LineGraph = styled.div`
+export const LineGraph = styled.div<IlineColor>`
   width: 70%;
   height: 75%;
   display: flex;
@@ -293,7 +293,7 @@ export const RecordTable = styled.div`
   }
 `;
 
-export const RecordCard = styled.div`
+export const RecordCard = styled.div<{ $win: boolean }>`
   ${Card}
   height: 14vh;
   display: flex;
@@ -473,7 +473,7 @@ export const RecordDetail = styled.div`
   transition: all 1s;
 `;
 
-export const TeamDetail = styled.div`
+export const TeamDetail = styled.div<{ $win: boolean }>`
   width: 50%;
   background-color: ${(props) => (props.$win ? `#F9FBFD` : `#FEF9F9`)};
 
@@ -626,7 +626,7 @@ export const TeamDetail = styled.div`
   }
 `;
 
-export const HorizenGraph = styled.div`
+export const HorizenGraph = styled.div<IhorizenColor>`
   width: 96%;
   height: 30%;
   margin: 0 2%;

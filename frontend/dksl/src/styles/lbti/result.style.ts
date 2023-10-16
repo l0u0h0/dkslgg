@@ -62,7 +62,7 @@ export const ResultContainer = styled.div`
   }
 `;
 
-export const TagItem = styled.div`
+export const TagItem = styled.div<{ $bg: string }>`
   ${Tag};
   background-color: ${(props) => props.$bg};
   margin-right: 0.5rem;
