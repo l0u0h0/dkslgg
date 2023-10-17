@@ -135,9 +135,10 @@ const formattingData = async (user: string | null | undefined) => {
   let win = 0;
 
   if (user == null || user == undefined || typeof user != 'string') return null;
-  const fetchData: IRecordData | string = await getSearchData(user).catch((error) => {
+  const fetchData: string | void | IRecordData = await getSearchData(user).catch((error) => {
     Swal.fire('Error', error.message, 'error');
   });
+  if (fetchData === void) return "NoData";
   if (typeof fetchData == 'string') return fetchData;
   const record: IRecordFormatData = {
     profile: fetchData.profile,
@@ -249,8 +250,8 @@ const formattingData = async (user: string | null | undefined) => {
       }).then((result) => {
         if (result.isConfirmed) window.location.href = '/';
       });
-    }
-    e[cur].play_time = match_ago;
+    } else 
+      e[cur].play_time = match_ago;
 
     // 객체 배열로 리턴
     return {
@@ -280,7 +281,7 @@ const formattingData = async (user: string | null | undefined) => {
   const now = new Date();
   const recordTime = new Date(record.profile[0].last_updated_at);
 
-  const refreshAgo = now - recordTime;
+  const refreshAgo = Number(now) - Number(recordTime);
   let refreshResult;
 
   let secondsDifference = Math.floor(refreshAgo / 1000);
@@ -316,10 +317,12 @@ const formattingData = async (user: string | null | undefined) => {
   };
 };
 
-const recordAtom = atomWithDefault(formattingData);
+const recordAtom = atomWithDefault<ReturnType<typeof formattingData> | null>(null);
 
-const updateRecordAtom = atom(null, async (get, set, update) => {
-  set(recordAtom, await formattingData(update));
+const updateRecordAtom = atom(undefined, async (get, set, update) => {
+  if (update != undefined) {
+    set(recordAtom, await formattingData(update));
+  }
 });
 
 export const useRecord = () => useAtomValue(recordAtom);
