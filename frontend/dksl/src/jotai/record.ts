@@ -1,6 +1,6 @@
 // data
-import { spell } from '../spell';
-import { rune } from '../rune';
+import { spell } from '../data/spell';
+import { rune } from '../data/rune';
 // Jotai
 import { atomWithDefault } from 'jotai/utils';
 import { useAtomValue, useSetAtom, atom } from 'jotai';

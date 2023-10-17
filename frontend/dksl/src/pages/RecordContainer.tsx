@@ -18,12 +18,12 @@ import axios from 'axios';
 import { useUpdateAnalyze } from '../jotai/analyze';
 
 // eslint-disable-next-line react/display-name
-const MemoizedProfileComponent = React.memo(({ data }) => {
+const MemoizedProfileComponent = React.memo<{ data: IProfileData | null }>(({ data }) => {
   return <ProfileComponent data={data} />;
 });
 
 // eslint-disable-next-line react/display-name
-const MemoizedRecordBodyComponent = React.memo(
+const MemoizedRecordBodyComponent = React.memo<RecordBodyProps>(
   ({
     recorddata,
     piedata,
@@ -49,9 +49,9 @@ const MemoizedRecordBodyComponent = React.memo(
 
 const RecordContainer = () => {
   const [recordTab, setRecordTab] = useState(0);
-  const [recorddata, setRecorddata] = useState(null);
-  const [piedata, setPiedata] = useState([{ id: '', label: '', value: 0 }]);
-  const [profile, setProfile] = useState(null);
+  const [recorddata, setRecorddata] = useState<IRecordData | null>(null);
+  const [piedata, setPiedata] = useState<IPieData[]>([{ id: '', label: '', value: 0 }]);
+  const [profile, setProfile] = useState<IProfileData | null>(null);
   const { summoner } = useParams();
   const navigate = useNavigate();
   const data = useRecord();
@@ -59,7 +59,7 @@ const RecordContainer = () => {
   const setAnalyze = useUpdateAnalyze();
   const setGroup = useUpdateGroup();
 
-  const fetchChampData = useCallback(async (championName) => {
+  const fetchChampData = useCallback(async (championName: string) => {
     try {
       const response = await axios.get(
         `https://ddragon.leagueoflegends.com/cdn/13.19.1/data/ko_KR/champion/${championName}.json`
