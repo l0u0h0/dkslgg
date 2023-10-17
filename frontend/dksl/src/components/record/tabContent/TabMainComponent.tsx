@@ -17,11 +17,11 @@ const options = [
 
 const animatedComponent = makeAnimated();
 
-const setRound = (num) => {
-  return +(Math.round(num + 'e+2') + 'e-2');
+const setRound = (num: number) => {
+  return +(Math.round(Number(num + 'e+2')) + 'e-2');
 };
 
-const capitalizeFirstLetter = (str) => {
+const capitalizeFirstLetter = (str: string) => {
   return str.charAt(0).toUpperCase() + str.slice(1);
 };
 
@@ -497,7 +497,7 @@ const RecordCardComponent = (props) => {
 const TabMainComponent = ({ data, piedata }) => {
   console.log('data: ', data);
   if (data == null) {
-    return <LoadingComponent />;
+    return <LoadingComponent white={false} />;
   }
   return (
     <S.TabMainLayout>
@@ -611,7 +611,7 @@ const TabMainComponent = ({ data, piedata }) => {
                   borderWidth={1}
                   borderColor={{
                     from: 'color',
-                    modifiers: [['darker', '0.2']],
+                    modifiers: [['darker', 0.2]],
                   }}
                   enableArcLinkLabels={false}
                   enableArcLabels={false}

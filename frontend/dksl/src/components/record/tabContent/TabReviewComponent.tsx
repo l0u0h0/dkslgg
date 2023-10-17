@@ -4,10 +4,10 @@ import { useRef, useEffect, useState } from 'react';
 import * as S from '@/styles/record/tabreview.style';
 // Componnet
 import LoadingComponent from '../../common/LoadingComponent.js';
-import { common, auth } from '../../../services/api.js';
+import { common } from '../../../services/api.js';
 import { getMember } from '../../../services/UserService.js';
 
-const TabReviewComponent = ({ evaluateeName, onSetEvaluation }) => {
+const TabReviewComponent = ({ evaluateeName }) => {
   const search = useRef();
   const [reviewList, setReviewList] = useState(["noData"])
   const [score, setScore] = useState(5)

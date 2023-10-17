@@ -10,7 +10,7 @@ import LoadingComponent from '../../common/LoadingComponent';
 import { useAnalyze } from '../../../jotai/analyze';
 import { useGroup } from '../../../jotai/group';
 // Data
-import { star } from '../../../star';
+import { star } from '../../../data/star';
 
 const openLink = (url) => {
   window.open(url, '_blank');

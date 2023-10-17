@@ -6,7 +6,7 @@ import TabAnalyzeComponent from './tabContent/TabAnalyzeComponent';
 import TabGroupComponent from './tabContent/TabGroupComponent';
 import TabReviewComponent from './tabContent/TabReviewComponent';
 
-const RecordBodyComponent = (props) => {
+const RecordBodyComponent = (props: RecordBodyProps) => {
   return (
     <S.RecordLayout>
       <S.TabLayout>
@@ -51,7 +51,7 @@ const RecordBodyComponent = (props) => {
               image={props.getByteToImage}
             />
           )}
-          {props.tab == 3 && <TabReviewComponent evaluateeName={props.searchSummonerName} onSetEvaluation={props.onSetEvaluation} />}
+          {props.tab == 3 && <TabReviewComponent evaluateeName={props.searchSummonerName} />}
         </div>
       </S.TabLayout>
     </S.RecordLayout>
