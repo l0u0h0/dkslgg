@@ -1,4 +1,4 @@
-export const spell = {
+export const spell: Spell = {
   type: 'summoner',
   version: '13.19.1',
   data: {

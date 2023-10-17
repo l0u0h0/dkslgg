@@ -52,7 +52,7 @@ interface IRecordDetailData {
   rune_0_id: number;
   rune_1_id: number;
   season: string;
-  gold: number;
+  gold: string;
   play_duration: string;
   play_time: string;
   queue_type: number;
@@ -72,6 +72,47 @@ interface IRecordDetailData {
   win_or_lose: number;
 }
 
+// 스펠 타입
+interface Spell {
+  type: string;
+  version: string;
+  data: { [key: number]: SpellData };
+}
+
+// 스펠 데이터 타입
+interface SpellData {
+  id: string;
+  name: string;
+  description: string;
+  tooltip: string;
+  maxrank: number;
+  cooldown: number[];
+  cooldownBurn: string;
+  cost: number[];
+  costBurn: string;
+  datavalues: {};
+  effect: (number[] | null)[];
+  effectBurn: (string | null)[];
+  vars: [];
+  key: string;
+  summonerLevel: number;
+  modes: string[];
+  costType: string;
+  maxammo: string;
+  range: number[];
+  rangeBurn: string;
+  image: {
+    full: string;
+    sprite: string;
+    group: string;
+    x: number;
+    y: number;
+    w: number;
+    h: number;
+  };
+  resource: string;
+}
+
 // Pie Graph Data Type
 interface IPieData {
   id: string;
@@ -84,6 +125,7 @@ interface RecordBodyProps {
   recorddata: IRecordData | null;
   piedata: IPieData[];
   tab: number;
+  searchSummonerName: string | undefined;
   setTab: React.Dispatch<React.SetStateAction<number>>;
   leaveTeam: (name: string) => Promise<void>;
   getByteToImage: (imgSrc: string) => string;
@@ -94,4 +136,22 @@ interface RecordBodyProps {
     tags: any;
     tips: any;
   } | null>;
+}
+
+// Record Jotai Service Data Type
+interface IRecentDataType {
+  win: number;
+  lose: number;
+  count: number;
+  kill: number;
+  death: number;
+  assist: number;
+  score: number;
+  kill_participation: number;
+  line: [];
+}
+
+interface IRecordFormatData {
+  profile: IProfileData[];
+  match_histories: IRecordDetailData[][];
 }

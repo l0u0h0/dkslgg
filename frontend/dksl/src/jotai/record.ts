@@ -13,7 +13,7 @@ import Swal from 'sweetalert2';
 function getDuoPlayer(data, cur) {
   const map = new Map();
 
-  let recentData = {
+  let recentData: IRecentDataType = {
     win: 0,
     lose: 0,
     count: 0,
@@ -118,7 +118,7 @@ function getDuoPlayer(data, cur) {
 }
 
 // 획득 골드량 포맷팅 메서드
-const formatGold = (number) => {
+const formatGold = (number: number) => {
   if (number >= 10000) {
     const quotient = Math.floor(number / 1000);
     return `${quotient / 10}만`;
@@ -131,21 +131,21 @@ const formatGold = (number) => {
 };
 
 // 요청 데이터 가공 메서드
-const formattingData = async (user) => {
+const formattingData = async (user: string | null | undefined) => {
   let win = 0;
 
   if (user == null || user == undefined || typeof user != 'string') return null;
-  const sample = await getSearchData(user).catch((error) => {
+  const fetchData: IRecordData | string = await getSearchData(user).catch((error) => {
     Swal.fire('Error', error.message, 'error');
   });
-  if (sample == 'NoData') return sample;
-  const record = {
-    profile: sample.profile,
+  if (typeof fetchData == 'string') return fetchData;
+  const record: IRecordFormatData = {
+    profile: fetchData.profile,
     match_histories: [],
   };
-  let tempArr = [];
-  for (let i = sample.match_histories.length - 1; i >= 0; i--) {
-    tempArr.push(sample.match_histories[i]);
+  let tempArr: IRecordDetailData[] = [];
+  for (let i = fetchData.match_histories.length - 1; i >= 0; i--) {
+    tempArr.push(fetchData.match_histories[i]);
     if (i % 10 == 0) {
       record.match_histories.push(tempArr);
       tempArr = [];
@@ -153,11 +153,14 @@ const formattingData = async (user) => {
   }
   const arr = record.match_histories.map((e) => {
     let cur;
-    let summary = [[], []];
+    let summary: {
+      name: string;
+      champ: string;
+    }[][] = [[], []];
     // 매치마다 시간 계산
     const timestamp = e[0].play_time;
-    const now = new Date();
-    const time = Math.floor((now - timestamp) / 1000);
+    const now = new Date().toISOString();
+    const time = Math.floor((Number(now) - Number(timestamp)) / 1000);
     let match_ago;
     if (time / 3600 > 23) {
       match_ago = `${Math.floor(time / 3600 / 24)}일 전`;
@@ -178,21 +181,22 @@ const formattingData = async (user) => {
       e[0].play_duration = str[0] + ':' + str[1] + str[2];
     }
 
-    const winner = [];
-    const loser = [];
+    const winner: IRecordDetailData[] = [];
+    const loser: IRecordDetailData[] = [];
 
     e.forEach((v, i) => {
       // 소환사마다 획득 골드 계산
-      const gold = v.gold;
-      v.gold = formatGold(gold);
+      const gold = Number(v.gold);
+      const resultGold: string = formatGold(gold);
+      v.gold = resultGold;
 
       // 소환사 스펠 정보 가공
       const spell_0 = v.spell_0_id;
       const spell_1 = v.spell_1_id;
 
-      if (typeof spell_0 == 'number') {
-        v.spell_0_id = spell.data[spell_0].id;
-        v.spell_1_id = spell.data[spell_1].id;
+      if (spell.data.hasOwnProperty(spell_0) && typeof spell_0 == 'number') {
+        v.spell_0_id = Number(spell.data[spell_0].id);
+        v.spell_1_id = Number(spell.data[spell_1].id);
       }
 
       // 소환사 룬 정보 가공
@@ -204,12 +208,12 @@ const formattingData = async (user) => {
           if (e.id == rune_0) {
             const rune_icon = e.icon.split('/');
             const end_str = rune_icon[rune_icon.length - 1].split('.')[0];
-            v.rune_0_id = end_str;
+            v.rune_0_id = Number(end_str);
           }
           if (e.id == rune_1) {
             const rune_icon = e.icon.split('/');
             const end_str = rune_icon[rune_icon.length - 1].split('.')[0];
-            v.rune_1_id = end_str;
+            v.rune_1_id = Number(end_str);
           }
         });
       }

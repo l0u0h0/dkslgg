@@ -5,8 +5,6 @@ import { useNavigate, useParams } from 'react-router-dom';
 import ProfileComponent from '../components/record/ProfileComponent';
 import HeaderComponent from '../components/common/HeaderComponent';
 import RecordBodyComponent from '../components/record/RecordBodyComponent';
-// 더미 데이터
-// import { laderData } from '../data';
 // Jotai
 import { useRecord, useUpdateRecord } from '../jotai/record';
 import { useUpdateGroup } from '../jotai/group';
@@ -28,6 +26,7 @@ const MemoizedRecordBodyComponent = React.memo<RecordBodyProps>(
     recorddata,
     piedata,
     tab,
+    searchSummonerName,
     setTab,
     leaveTeam,
     getByteToImage,
@@ -38,6 +37,7 @@ const MemoizedRecordBodyComponent = React.memo<RecordBodyProps>(
         recorddata={recorddata}
         piedata={piedata}
         tab={tab}
+        searchSummonerName={searchSummonerName}
         setTab={setTab}
         leaveTeam={leaveTeam}
         getByteToImage={getByteToImage}
