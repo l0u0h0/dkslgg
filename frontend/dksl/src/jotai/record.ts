@@ -8,9 +8,11 @@ import { getSearchData } from '../services/RecordService';
 // Swal
 import Swal from 'sweetalert2';
 
+const defaultAtom = atom(null);
+
 // 함께한 소환사 아이콘, 이름, 게임 수, 승-패, 승률 메서드
 // 20 게임의 매치 데이터와 검색된 소환사 받기
-function getDuoPlayer(data, cur) {
+function getDuoPlayer(data: GetDuoPlayerDataProps[], cur: string) {
   const map = new Map();
 
   let recentData: IRecentDataType = {
@@ -131,15 +133,15 @@ const formatGold = (number: number) => {
 };
 
 // 요청 데이터 가공 메서드
-const formattingData = async (user: string | null | undefined) => {
+const formattingData: (user: string | null | undefined) => Promise<string | IFormatRecordData | null> = async (user) => {
   let win = 0;
 
   if (user == null || user == undefined || typeof user != 'string') return null;
   const fetchData: string | void | IRecordData = await getSearchData(user).catch((error) => {
     Swal.fire('Error', error.message, 'error');
   });
-  if (fetchData === void) return "NoData";
-  if (typeof fetchData == 'string') return fetchData;
+  if (typeof fetchData === 'undefined') return null;
+  if (typeof fetchData === 'string') return fetchData;
   const record: IRecordFormatData = {
     profile: fetchData.profile,
     match_histories: [],
@@ -153,7 +155,7 @@ const formattingData = async (user: string | null | undefined) => {
     }
   }
   const arr = record.match_histories.map((e) => {
-    let cur;
+    let cur: number | undefined = undefined;
     let summary: {
       name: string;
       champ: string;
@@ -242,15 +244,16 @@ const formattingData = async (user: string | null | undefined) => {
     });
 
     // 계산된 매치 시간대 저장
-    if (cur === undefined) {
+    if (typeof cur === 'undefined') {
       Swal.fire({
         title: '이런!',
         text: '정확한 소환사명을 입력해주세요!',
         icon: 'error',
       }).then((result) => {
+        cur = 0;
         if (result.isConfirmed) window.location.href = '/';
       });
-    } else 
+    } else if (typeof cur === 'number')
       e[cur].play_time = match_ago;
 
     // 객체 배열로 리턴
@@ -263,7 +266,7 @@ const formattingData = async (user: string | null | undefined) => {
       loser,
     };
   });
-  const result = await getDuoPlayer(arr, user);
+  const result = getDuoPlayer(arr, user);
   const duoPlayer = result.result.filter((e) => {
     if (e[1].count > 1) return e;
   });
@@ -317,12 +320,10 @@ const formattingData = async (user: string | null | undefined) => {
   };
 };
 
-const recordAtom = atomWithDefault<ReturnType<typeof formattingData> | null>(null);
+const recordAtom = atomWithDefault<string | IFormatRecordData | null>((get) => get(defaultAtom));
 
-const updateRecordAtom = atom(undefined, async (get, set, update) => {
-  if (update != undefined) {
-    set(recordAtom, await formattingData(update));
-  }
+const updateRecordAtom = atom(null, async (_get, set, name: string) => {
+  set(recordAtom, await formattingData(name));
 });
 
 export const useRecord = () => useAtomValue(recordAtom);

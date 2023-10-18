@@ -14,7 +14,7 @@ const getSearchData = async (word: string | null | undefined): Promise<string | 
     if (putRequest.status != 200) throw new Error('PUT ERROR');
     const response = await record.get(`/match-histories?summoner_name=${word}`);
     if (response.status != 200) {
-      return 'NoData';
+      return Promise.resolve('NoData');
     }
     return response.data;
   } catch (error) {
@@ -25,8 +25,9 @@ const getSearchData = async (word: string | null | undefined): Promise<string | 
     }).then((result) => {
       if (result.isConfirmed) window.location.href = '/';
     });
+    return Promise.reject('NoData');
   } finally {
-    return 'NoData';
+    return Promise.resolve('NoData');
   }
 };
 
