@@ -113,6 +113,55 @@ interface SpellData {
   resource: string;
 }
 
+// Formatting Record Data
+interface IFormatRecordData {
+  profile: {
+    positions_cnt: number;
+    last_updated_at: string;
+    summoner_name: string;
+    profile_icon_id: number;
+    tier_name: string;
+    queue_id: number;
+    rank: number;
+    wins: number;
+    losses: number;
+    current_season_summary_id: string;
+    champions: [
+      {
+        queue_id: number;
+        cnt: number;
+        win_rate: number;
+        kda: number;
+        champion_name: string;
+      },
+    ];
+    positions: [
+      {
+        queue_id: number;
+        img: string | null;
+        win_rate: number;
+        kda: number;
+        cnt: number;
+        line: string;
+      },
+    ];
+  };
+  freeRank: IProfileData | null;
+  duoPlayer: any[][];
+  recent: IRecentDataType;
+  match_histories: {
+    win: number;
+    cur: undefined;
+    summary: {
+      name: string;
+      champ: string;
+    }[][];
+    data: IRecordDetailData[];
+    winner: IRecordDetailData[];
+    loser: IRecordDetailData[];
+  }[];
+}
+
 // Pie Graph Data Type
 interface IPieData {
   id: string;
@@ -154,4 +203,17 @@ interface IRecentDataType {
 interface IRecordFormatData {
   profile: IProfileData[];
   match_histories: IRecordDetailData[][];
+}
+
+// getDuoPlayer Props Type 
+interface GetDuoPlayerDataProps {
+  win: number;
+  cur: number | undefined;
+  summary: {
+    name: string;
+    champ: string;
+  }[][];
+  data: IRecordDetailData[];
+  winner: IRecordDetailData[];
+  loser: IRecordDetailData[];
 }
