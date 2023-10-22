@@ -1,3 +1,4 @@
+// styled
 import styled from 'styled-components';
 import { Card } from '../globalStyles.style';
 

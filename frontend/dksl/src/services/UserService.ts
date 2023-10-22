@@ -3,6 +3,8 @@ import axios from 'axios';
 import { auth, common } from './api';
 // Swal
 import Swal from 'sweetalert2';
+// types
+import { ISigninUser, ISignupUser } from '@/types/service/types';
 
 // 회원가입 API
 const register = async (data: ISignupUser) => {

@@ -1,5 +1,8 @@
+// styled
 import styled from 'styled-components';
 import { Card } from '../globalStyles.style';
+// types
+import { IhorizenColor, IlineColor } from '@/types/style/types';
 
 export const TabMainLayout = styled.div`
   width: 100%;

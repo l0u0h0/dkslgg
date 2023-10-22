@@ -3,16 +3,21 @@ import { atom, useAtomValue, useSetAtom } from 'jotai';
 import { atomWithDefault } from 'jotai/utils';
 // Service
 import { getAnalyzeData } from '../services/RecordService';
+// types
+import { IAnalyzeData, AnalyzeData } from '../types/component/analyze.types';
 
-const capitalizeStr = (string) => {
-  if (string == 'Jarvaniv') return 'JarvanIV';
+const capitalizeStr = (string: string) => {
+  if (string === 'Jarvaniv') return 'JarvanIV';
   return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
 };
 
-const getAnalyze = async (name) => {
-  if (name == null || name == undefined || typeof name != 'string') return null;
+const getAnalyze = async (
+  name: null | undefined | string
+): Promise<IAnalyzeData | 'NoData' | null> => {
+  if (name == null || name == undefined || typeof name !== 'string')
+    return null;
   if (name) {
-    const data = await getAnalyzeData(name);
+    const data: AnalyzeData | null = await getAnalyzeData(name);
 
     if (data) {
       return {
@@ -53,7 +58,7 @@ const getAnalyze = async (name) => {
 
 const anaylzeAtom = atomWithDefault(getAnalyze);
 
-const updateAnalyzeAtom = atom(null, async (get, set, update) => {
+const updateAnalyzeAtom = atom(null, async (_get, set, update) => {
   set(anaylzeAtom, await getAnalyze(update));
 });
 

@@ -1,3 +1,4 @@
+// styled
 import styled from 'styled-components';
 
 export const ProfileLayout = styled.div<{ $bgnum: number }>`

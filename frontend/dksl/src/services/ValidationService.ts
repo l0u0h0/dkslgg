@@ -1,3 +1,6 @@
+// types
+import { IValidationUser } from '@/types/service/types';
+
 const emailVaildationCheck = (email: string) => {
   // email Checking
   const regexEmail = new RegExp(

@@ -1,5 +1,5 @@
 // Validation Service User
-interface IValidationUser {
+export interface IValidationUser {
   name: string;
   clientId: string;
   password: string;
@@ -9,7 +9,7 @@ interface IValidationUser {
 }
 
 // UserService
-interface ISignupUser {
+export interface ISignupUser {
   name: string;
   clientId: string;
   password: string;
@@ -17,7 +17,7 @@ interface ISignupUser {
   email: string;
 }
 
-interface ISigninUser {
+export interface ISigninUser {
   clientId: string;
   password: string;
 }

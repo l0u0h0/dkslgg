@@ -1,8 +1,11 @@
 // User API (Axios)
 import Swal from 'sweetalert2';
 import { record } from './api';
+import { IRecordData } from '@/types/component/record.types';
 
-const getSearchData = async (word: string | null | undefined): Promise<string | IRecordData> => {
+const getSearchData = async (
+  word: string | null | undefined
+): Promise<string | IRecordData> => {
   try {
     const postRequest = await record.post(
       `/match-histories?summoner_name=${word}`

@@ -12,13 +12,13 @@ const getAuth = async () => {
 
   if (token.access) {
     const reAuth = await getMember();
-    
+
     if (reAuth != undefined && reAuth.status == 200) return reAuth.data;
   }
 
   if (token.refresh) {
     const reAccess = await reAccessToken(token.refresh);
-    
+
     if (reAccess != undefined && reAccess.status == 200) {
       sessionStorage.setItem('accessToken', reAccess.data);
 
@@ -32,7 +32,7 @@ const getAuth = async () => {
 
 const authAtom = atomWithDefault(getAuth);
 
-const updateAuthAtom = atom(null, async (get, set) => {
+const updateAuthAtom = atom(null, async (_get, set) => {
   set(authAtom, await getAuth());
 });
 

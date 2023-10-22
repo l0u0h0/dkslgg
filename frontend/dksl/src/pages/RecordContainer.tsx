@@ -14,11 +14,20 @@ import Swal from 'sweetalert2';
 // Axios
 import axios from 'axios';
 import { useUpdateAnalyze } from '../jotai/analyze';
+// types
+import {
+  IFormatRecordData,
+  IPieData,
+  IProfileData,
+  RecordBodyProps,
+} from '@/types/component/record.types';
 
 // eslint-disable-next-line react/display-name
-const MemoizedProfileComponent = React.memo<{ data: IProfileData | null }>(({ data }) => {
-  return <ProfileComponent data={data} />;
-});
+const MemoizedProfileComponent = React.memo<{ data: IProfileData | null }>(
+  ({ data }) => {
+    return <ProfileComponent data={data} />;
+  }
+);
 
 // eslint-disable-next-line react/display-name
 const MemoizedRecordBodyComponent = React.memo<RecordBodyProps>(
@@ -49,8 +58,14 @@ const MemoizedRecordBodyComponent = React.memo<RecordBodyProps>(
 
 const RecordContainer = () => {
   const [recordTab, setRecordTab] = useState(0);
-  const [recorddata, setRecorddata] = useState<IRecordData | null>(null);
+  const [recorddata, setRecorddata] = useState<IFormatRecordData | null>(null);
+<<<<<<< HEAD
+  const [piedata, setPiedata] = useState<IPieData[]>([
+    { id: '', label: '', value: 0 },
+  ]);
+=======
   const [piedata, setPiedata] = useState<IPieData[]>([{ id: '', label: '', value: 0 }]);
+>>>>>>> 133a5ff660a23a5ec27f269ea52bc5648c4b3b82
   const [profile, setProfile] = useState<IProfileData | null>(null);
   const { summoner } = useParams();
   const navigate = useNavigate();
@@ -84,20 +99,22 @@ const RecordContainer = () => {
         Swal.fire('이런!', '정보가 없는 소환사입니다!', 'info');
         navigate('/');
       }
-      setRecorddata(data);
-      setProfile(data.profile);
-      setPiedata([
-        {
-          id: '승리',
-          label: '승리',
-          value: data.recent.win,
-        },
-        {
-          id: '패배',
-          label: '패배',
-          value: data.recent.lose,
-        },
-      ]);
+      if (typeof data !== 'string') {
+        setRecorddata(data);
+        setProfile(data.profile);
+        setPiedata([
+          {
+            id: '승리',
+            label: '승리',
+            value: data.recent.win,
+          },
+          {
+            id: '패배',
+            label: '패배',
+            value: data.recent.lose,
+          },
+        ]);
+      }
     }
   }, [data, navigate]);
 
@@ -128,11 +145,13 @@ const RecordContainer = () => {
     const result = await groupLeave(name);
 
     if (result) {
-      Swal.fire('탈퇴', name + '소속에서 탈퇴되셨습니다.', 'success').then((result) => {
-        if (result.isConfirmed || result.isConfirmed || result.isDenied) {
-          location.reload();
+      Swal.fire('탈퇴', name + '소속에서 탈퇴되셨습니다.', 'success').then(
+        (result) => {
+          if (result.isConfirmed || result.isConfirmed || result.isDenied) {
+            location.reload();
+          }
         }
-      });
+      );
     }
   }, []);
 

@@ -1,11 +1,11 @@
 // 서버에서 받아오는 전체 레코드 데이터 (전적 + 프로필)
-interface IRecordData {
+export interface IRecordData {
   profile: IProfileData[];
   match_histories: IRecordDetailData[];
 }
 
 // 프로필 데이터
-interface IProfileData {
+export interface IProfileData {
   summoner_name: string;
   profile_icon_id: number;
   tier_name: string;
@@ -37,7 +37,7 @@ interface IProfileData {
 }
 
 // 전적 데이터
-interface IRecordDetailData {
+export interface IRecordDetailData {
   level: number;
   CS: number;
   item_0_id: number;
@@ -73,14 +73,14 @@ interface IRecordDetailData {
 }
 
 // 스펠 타입
-interface Spell {
+export interface Spell {
   type: string;
   version: string;
   data: { [key: number]: SpellData };
 }
 
 // 스펠 데이터 타입
-interface SpellData {
+export interface SpellData {
   id: string;
   name: string;
   description: string;
@@ -114,7 +114,11 @@ interface SpellData {
 }
 
 // Formatting Record Data
+<<<<<<< HEAD
+export interface IFormatRecordData {
+=======
 interface IFormatRecordData {
+>>>>>>> 133a5ff660a23a5ec27f269ea52bc5648c4b3b82
   profile: {
     positions_cnt: number;
     last_updated_at: string;
@@ -163,15 +167,19 @@ interface IFormatRecordData {
 }
 
 // Pie Graph Data Type
-interface IPieData {
+export interface IPieData {
   id: string;
   label: string;
   value: number;
 }
 
 // RecordBodyComponent Props Type
+<<<<<<< HEAD
+export interface RecordBodyProps {
+=======
 interface RecordBodyProps {
-  recorddata: IRecordData | null;
+>>>>>>> 133a5ff660a23a5ec27f269ea52bc5648c4b3b82
+  recorddata: IFormatRecordData | null;
   piedata: IPieData[];
   tab: number;
   searchSummonerName: string | undefined;
@@ -188,7 +196,7 @@ interface RecordBodyProps {
 }
 
 // Record Jotai Service Data Type
-interface IRecentDataType {
+export interface IRecentDataType {
   win: number;
   lose: number;
   count: number;
@@ -200,13 +208,18 @@ interface IRecentDataType {
   line: [];
 }
 
-interface IRecordFormatData {
+export interface IRecordFormatData {
   profile: IProfileData[];
   match_histories: IRecordDetailData[][];
 }
 
+<<<<<<< HEAD
+// getDuoPlayer Props Type
+export interface GetDuoPlayerDataProps {
+=======
 // getDuoPlayer Props Type 
 interface GetDuoPlayerDataProps {
+>>>>>>> 133a5ff660a23a5ec27f269ea52bc5648c4b3b82
   win: number;
   cur: number | undefined;
   summary: {
@@ -216,4 +229,8 @@ interface GetDuoPlayerDataProps {
   data: IRecordDetailData[];
   winner: IRecordDetailData[];
   loser: IRecordDetailData[];
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 133a5ff660a23a5ec27f269ea52bc5648c4b3b82

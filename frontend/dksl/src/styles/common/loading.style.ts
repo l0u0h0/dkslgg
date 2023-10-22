@@ -1,3 +1,4 @@
+// styled
 import styled from 'styled-components';
 
 export const LoadingLayout = styled.section<{ $white: boolean }>`

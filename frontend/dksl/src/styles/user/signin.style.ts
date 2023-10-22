@@ -1,3 +1,4 @@
+// styled
 import styled from 'styled-components';
 
 export const SigninLayout = styled.div<{ $bgnum: number }>`

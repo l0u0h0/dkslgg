@@ -1,4 +1,5 @@
-import styled from "styled-components";
+// styled
+import styled from 'styled-components';
 
 export const mainDiv = styled.div`
   width: 80vw;

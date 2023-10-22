@@ -1,3 +1,4 @@
+// styled
 import styled from 'styled-components';
 import { Card } from '../globalStyles.style';
 
@@ -37,7 +38,6 @@ export const ArenaContainer = styled.div`
   max-width: 860px;
   height: 100%;
 
-  
   & .search-input {
     width: 95%;
     margin: 0.75rem auto;
@@ -82,11 +82,11 @@ export const ArenaBox = styled.div`
   width: 94%;
   min-height: 120px;
   margin: 5px 3%;
-  background-color: #F6F4F4;
+  background-color: #f6f4f4;
   display: flex;
   flex-direction: column;
   justify-content: end;
-  border: 1px solid #E7E7E7;
+  border: 1px solid #e7e7e7;
   border-radius: 5px;
   font-weight: 600;
 
@@ -98,8 +98,8 @@ export const ArenaBox = styled.div`
 
     & p {
       margin: 0;
-      font-size: large;      
-      margin-left: .5rem;
+      font-size: large;
+      margin-left: 0.5rem;
     }
 
     & .profile {
@@ -124,7 +124,7 @@ export const ArenaBox = styled.div`
       display: flex;
       flex-basis: 50%;
       justify-content: end;
-      margin-top: .5rem;
+      margin-top: 0.5rem;
     }
   }
 
@@ -134,14 +134,14 @@ export const ArenaBox = styled.div`
     min-height: 55px;
     margin: 2%;
     margin-top: 0;
-    background-color: #E7E7E7;
+    background-color: #e7e7e7;
     border-radius: 5px;
 
     & .content {
       margin-left: 1rem;
     }
   }
-`
+`;
 
 export const Container = styled.div`
   position: absolute;

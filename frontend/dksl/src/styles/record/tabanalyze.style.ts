@@ -1,3 +1,4 @@
+// styled
 import styled from 'styled-components';
 import { Card, Tag } from '../globalStyles.style';
 
@@ -24,12 +25,12 @@ export const NoDataLayout = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  
+
   & .info {
     font-size: x-large;
     font-weight: bold;
   }
-`
+`;
 
 export const AnalyzeCard = styled.div`
   ${Card}

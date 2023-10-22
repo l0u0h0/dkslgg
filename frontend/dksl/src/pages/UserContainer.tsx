@@ -11,6 +11,7 @@ import { signIn } from '../services/UserService';
 import Swal from 'sweetalert2';
 // Jotai
 import { useAuth, useUpdateAuth } from '../jotai/auth';
+// Service
 import { userValidationCheck } from '../services/ValidationService';
 
 const UserContainer = () => {
@@ -46,7 +47,13 @@ const UserContainer = () => {
       });
       return;
     }
-    const data = await register({clientId: signup.clientId, password: signup.password, name: signup.name, phone: signup.phone, email:signup.email});
+    const data = await register({
+      clientId: signup.clientId,
+      password: signup.password,
+      name: signup.name,
+      phone: signup.phone,
+      email: signup.email,
+    });
     if (data != undefined && data.status == 200) {
       Swal.fire({
         title: '알림',

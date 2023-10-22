@@ -1,3 +1,4 @@
+// styled
 import styled from 'styled-components';
 import { Card } from '../globalStyles.style';
 
@@ -101,7 +102,7 @@ export const MainContainer = styled.div`
       width: 100%;
       height: 3rem;
       padding: 0 2%;
-      margin: 1.5rem .5rem;
+      margin: 1.5rem 0.5rem;
       margin-bottom: 0.5rem;
       margin-top: 1rem;
       font-size: medium;
@@ -156,7 +157,7 @@ export const MainContainer = styled.div`
             justify-content: center;
             align-items: center;
             flex-basis: 10%;
-            
+
             & img {
               width: 70%;
               border-radius: 5px;

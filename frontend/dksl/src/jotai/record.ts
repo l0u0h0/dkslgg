@@ -7,6 +7,15 @@ import { useAtomValue, useSetAtom, atom } from 'jotai';
 import { getSearchData } from '../services/RecordService';
 // Swal
 import Swal from 'sweetalert2';
+// types
+import {
+  GetDuoPlayerDataProps,
+  IFormatRecordData,
+  IRecentDataType,
+  IRecordData,
+  IRecordDetailData,
+  IRecordFormatData,
+} from '@/types/component/record.types';
 
 const defaultAtom = atom(null);
 
@@ -133,11 +142,15 @@ const formatGold = (number: number) => {
 };
 
 // 요청 데이터 가공 메서드
-const formattingData: (user: string | null | undefined) => Promise<string | IFormatRecordData | null> = async (user) => {
+const formattingData: (
+  user: string | null | undefined
+) => Promise<string | IFormatRecordData | null> = async (user) => {
   let win = 0;
 
   if (user == null || user == undefined || typeof user != 'string') return null;
-  const fetchData: string | void | IRecordData = await getSearchData(user).catch((error) => {
+  const fetchData: string | void | IRecordData = await getSearchData(
+    user
+  ).catch((error) => {
     Swal.fire('Error', error.message, 'error');
   });
   if (typeof fetchData === 'undefined') return null;
@@ -180,7 +193,7 @@ const formattingData: (user: string | null | undefined) => Promise<string | IFor
     if (str.length < 5) {
       if (str.length == 4)
         e[0].play_duration = str[0] + str[1] + ':' + str[2] + str[3];
-      else (str.length == 3)
+      else str.length == 3;
       e[0].play_duration = str[0] + ':' + str[1] + str[2];
     }
 
@@ -253,8 +266,7 @@ const formattingData: (user: string | null | undefined) => Promise<string | IFor
         cur = 0;
         if (result.isConfirmed) window.location.href = '/';
       });
-    } else if (typeof cur === 'number')
-      e[cur].play_time = match_ago;
+    } else if (typeof cur === 'number') e[cur].play_time = match_ago;
 
     // 객체 배열로 리턴
     return {
@@ -320,7 +332,9 @@ const formattingData: (user: string | null | undefined) => Promise<string | IFor
   };
 };
 
-const recordAtom = atomWithDefault<string | IFormatRecordData | null>((get) => get(defaultAtom));
+const recordAtom = atomWithDefault<string | IFormatRecordData | null>((get) =>
+  get(defaultAtom)
+);
 
 const updateRecordAtom = atom(null, async (_get, set, name: string) => {
   set(recordAtom, await formattingData(name));

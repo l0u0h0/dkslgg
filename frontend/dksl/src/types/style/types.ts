@@ -1,17 +1,16 @@
-
 // Line Graph Color
-interface IlineColor {
+export interface IlineColor {
   $gray: number;
   $blue: number;
 }
 
-// Horizen Graph Color 
-interface IhorizenColor {
+// Horizen Graph Color
+export interface IhorizenColor {
   $red: number;
   $gray: number;
 }
 
-// Label For File 
-interface ILabelForFile {
+// Label For File
+export interface ILabelForFile {
   $for: string;
 }

@@ -1,4 +1,7 @@
+// styled
 import styled from 'styled-components';
+// types
+import { ILabelForFile } from '@/types/style/types';
 
 export const CreateLayout = styled.div`
   width: 100%;

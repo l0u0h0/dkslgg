@@ -1,3 +1,4 @@
+// styled
 import styled from 'styled-components';
 
 export const SearchLayout = styled.div<{ $bgnum: number }>`
