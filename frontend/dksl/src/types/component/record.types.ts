@@ -114,11 +114,7 @@ export interface SpellData {
 }
 
 // Formatting Record Data
-<<<<<<< HEAD
 export interface IFormatRecordData {
-=======
-interface IFormatRecordData {
->>>>>>> 133a5ff660a23a5ec27f269ea52bc5648c4b3b82
   profile: {
     positions_cnt: number;
     last_updated_at: string;
@@ -174,11 +170,7 @@ export interface IPieData {
 }
 
 // RecordBodyComponent Props Type
-<<<<<<< HEAD
 export interface RecordBodyProps {
-=======
-interface RecordBodyProps {
->>>>>>> 133a5ff660a23a5ec27f269ea52bc5648c4b3b82
   recorddata: IFormatRecordData | null;
   piedata: IPieData[];
   tab: number;
@@ -213,13 +205,8 @@ export interface IRecordFormatData {
   match_histories: IRecordDetailData[][];
 }
 
-<<<<<<< HEAD
 // getDuoPlayer Props Type
 export interface GetDuoPlayerDataProps {
-=======
-// getDuoPlayer Props Type 
-interface GetDuoPlayerDataProps {
->>>>>>> 133a5ff660a23a5ec27f269ea52bc5648c4b3b82
   win: number;
   cur: number | undefined;
   summary: {
@@ -229,8 +216,4 @@ interface GetDuoPlayerDataProps {
   data: IRecordDetailData[];
   winner: IRecordDetailData[];
   loser: IRecordDetailData[];
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 133a5ff660a23a5ec27f269ea52bc5648c4b3b82
