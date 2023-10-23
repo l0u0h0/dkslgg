@@ -13,10 +13,8 @@ const capitalizeStr = (string: string) => {
 
 const getAnalyze = async (
   name: string |  null
-): Promise<IAnalyzeData | 'NoData'> => {
-  if (name == null || typeof name !== 'string')
-    return 'NoData';
-  if (name) {
+): Promise<IAnalyzeData | null> => {
+  if (name !== null) {
     const data: AnalyzeData | null = await getAnalyzeData(name);
 
     if (data) {
@@ -49,14 +47,11 @@ const getAnalyze = async (
         },
       };
     }
-  } else {
-    return 'NoData';
   }
-
-  return 'NoData';
+  return null;
 };
 
-const anaylzeAtom = atomWithDefault(getAnalyze(null));
+const anaylzeAtom = atomWithDefault(() => getAnalyze);
 
 const updateAnalyzeAtom = atom(null, async (_get, set, update: string | null) => {
   set(anaylzeAtom, await getAnalyze(update));
