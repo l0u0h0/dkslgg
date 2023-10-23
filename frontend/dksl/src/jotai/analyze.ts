@@ -1,5 +1,5 @@
 // jotai
-import { atom, useAtomValue, useSetAtom } from 'jotai';
+import { Getter, atom, useAtomValue, useSetAtom } from 'jotai';
 import { atomWithDefault } from 'jotai/utils';
 // Service
 import { getAnalyzeData } from '../services/RecordService';
@@ -12,10 +12,10 @@ const capitalizeStr = (string: string) => {
 };
 
 const getAnalyze = async (
-  name: null | undefined | string
-): Promise<IAnalyzeData | 'NoData' | null> => {
-  if (name == null || name == undefined || typeof name !== 'string')
-    return null;
+  name: string |  null
+): Promise<IAnalyzeData | 'NoData'> => {
+  if (name == null || typeof name !== 'string')
+    return 'NoData';
   if (name) {
     const data: AnalyzeData | null = await getAnalyzeData(name);
 
@@ -39,7 +39,7 @@ const getAnalyze = async (
           cs: data['10분 미니언'],
           dpm: data.dpm,
           kda: data.kda,
-          minion_avg: data.minion_avg,
+          minion_avg: `${data.minion_avg}`,
           assist: data['분 당 어시'],
           soloKill: data['솔로킬'],
           vision: data['시야 점수'],
@@ -56,9 +56,9 @@ const getAnalyze = async (
   return 'NoData';
 };
 
-const anaylzeAtom = atomWithDefault(getAnalyze);
+const anaylzeAtom = atomWithDefault(getAnalyze(null));
 
-const updateAnalyzeAtom = atom(null, async (_get, set, update) => {
+const updateAnalyzeAtom = atom(null, async (_get, set, update: string | null) => {
   set(anaylzeAtom, await getAnalyze(update));
 });
 

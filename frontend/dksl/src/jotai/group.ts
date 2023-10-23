@@ -1,10 +1,10 @@
 // Jotai
-import { atom, useAtomValue, useSetAtom } from 'jotai';
+import { Getter, atom, useAtomValue, useSetAtom } from 'jotai';
 import { atomWithDefault } from 'jotai/utils';
 // Service
 import { getSummonerGroup } from '../services/GroupService';
 
-const getGroup = async (name: null | undefined | string) => {
+const getGroup = async (name: Getter) => {
   if (name == null || name == undefined || typeof name != 'string') {
     return null;
   }
@@ -21,7 +21,7 @@ const getGroup = async (name: null | undefined | string) => {
 
 const groupAtom = atomWithDefault(getGroup);
 
-const updateGroupAtom = atom(null, async (_get, set, update) => {
+const updateGroupAtom = atom(null, async (_get, set, update: Getter) => {
   set(groupAtom, await getGroup(update));
 });
 
