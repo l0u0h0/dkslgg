@@ -11,13 +11,13 @@ const capitalizeStr = (string: string) => {
   return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
 };
 
-const getAnalyze = async (
-  name: string |  null
-): Promise<IAnalyzeData | null> => {
+const getAnalyze: (name: string | null) => Promise<IAnalyzeData | string> = async (
+  name
+) => {
   if (name !== null) {
-    const data: AnalyzeData | null = await getAnalyzeData(name);
+    const data: AnalyzeData | string = await getAnalyzeData(name);
 
-    if (data) {
+    if (typeof data !== 'string') {
       return {
         chapmions: [
           capitalizeStr(data.champ0.replace(/\s+/g, '')),
@@ -48,13 +48,13 @@ const getAnalyze = async (
       };
     }
   }
-  return null;
+  return "NoData";
 };
 
-const anaylzeAtom = atomWithDefault(() => getAnalyze);
+const anaylzeAtom = atomWithDefault<string | IAnalyzeData>(null);
 
-const updateAnalyzeAtom = atom(null, async (_get, set, update: string | null) => {
-  set(anaylzeAtom, await getAnalyze(update));
+const updateAnalyzeAtom = atom(null, async (_get, set, name: string | null) => {
+  set(anaylzeAtom, await getAnalyze(name));
 });
 
 export const useUpdateAnalyze = () => useSetAtom(updateAnalyzeAtom);
