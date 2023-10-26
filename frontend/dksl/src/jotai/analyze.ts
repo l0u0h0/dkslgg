@@ -53,7 +53,9 @@ const getAnalyze: (name: Getter | string | null) => Promise<IAnalyzeData | strin
   return "NoData";
 };
 
-const anaylzeAtom = atomWithDefault<string | IAnalyzeData | null | undefined>(getAnalyze);
+const anaylzeAtom = atomWithDefault<string | IAnalyzeData | null>((get) => 
+  get(atom(null))
+);
 
 const updateAnalyzeAtom = atom(null, async (_get, set, name: Getter | string | null) => {
   set(anaylzeAtom, await getAnalyze(name));
