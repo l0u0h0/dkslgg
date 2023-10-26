@@ -11,7 +11,7 @@ const capitalizeStr = (string: string) => {
   return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
 };
 
-const getAnalyze: (name: Getter | string | null) => Promise<IAnalyzeData | string> = async (
+const getAnalyze: (name: Getter | string | null) => Promise<IAnalyzeData | string | null> = async (
   name
 ) => {
   if (name !== null) {
@@ -46,12 +46,14 @@ const getAnalyze: (name: Getter | string | null) => Promise<IAnalyzeData | strin
           ward: data['핑크와드 구매'],
         },
       };
+    } else {
+      return data;
     }
   }
   return "NoData";
 };
 
-const anaylzeAtom = atomWithDefault<string | IAnalyzeData>(getAnalyze);
+const anaylzeAtom = atomWithDefault<string | IAnalyzeData | null | undefined>(() => getAnalyze(null));
 
 const updateAnalyzeAtom = atom(null, async (_get, set, name: Getter | string | null) => {
   set(anaylzeAtom, await getAnalyze(name));
