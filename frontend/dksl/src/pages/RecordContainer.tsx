@@ -59,13 +59,9 @@ const MemoizedRecordBodyComponent = React.memo<RecordBodyProps>(
 const RecordContainer = () => {
   const [recordTab, setRecordTab] = useState(0);
   const [recorddata, setRecorddata] = useState<IFormatRecordData | null>(null);
-<<<<<<< HEAD
   const [piedata, setPiedata] = useState<IPieData[]>([
     { id: '', label: '', value: 0 },
   ]);
-=======
-  const [piedata, setPiedata] = useState<IPieData[]>([{ id: '', label: '', value: 0 }]);
->>>>>>> 133a5ff660a23a5ec27f269ea52bc5648c4b3b82
   const [profile, setProfile] = useState<IProfileData | null>(null);
   const { summoner } = useParams();
   const navigate = useNavigate();

@@ -1,26 +1,44 @@
 // Styled
 import * as S from '@/styles/group/create.style';
 // React
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, ChangeEvent } from 'react';
 
 const GroupCreateComponent = () => {
-  const [src, setSrc] = useState('/image/noimage.png');
-  const fileDOM = useRef();
+  const [src, setSrc] = useState<string>('/image/noimage.png');
+  const fileDOM = useRef<HTMLInputElement | null>(null);
 
   const uploadBtn = () => {
-    const fileInput = document.getElementById('img');
-    if (fileInput) fileInput.click();
+    if (fileDOM.current) {
+      fileDOM.current.click();
+    }
+  };
+
+  const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      const file = e.target.files[0];
+      const imageSrc = URL.createObjectURL(file);
+
+      if (imageSrc) {
+        setSrc(imageSrc);
+      }
+    }
   };
 
   useEffect(() => {
-    document.addEventListener('change', (e) => {
-      if (e.target != fileDOM.current) return;
-      const imageSrc = URL.createObjectURL(fileDOM.current.files[0]);
-      setSrc(imageSrc);
-    });
+    if (fileDOM.current) {
+      fileDOM.current.addEventListener(
+        'change',
+        handleFileChange as unknown as EventListener
+      );
+    }
 
-    return URL.revokeObjectURL(fileDOM.current.files[0]);
-  }, []);
+    return () => {
+      if (fileDOM.current) {
+        URL.revokeObjectURL(src);
+      }
+    };
+  }, [src]);
+
   return (
     <S.CreateLayout>
       <div className="input-area-1">
@@ -33,7 +51,7 @@ const GroupCreateComponent = () => {
               onClick={uploadBtn}
             />
           </S.LabelForFile>
-          <input type="file" id="img" ref={fileDOM} />
+          <input type="file" id="img" ref={fileDOM} accept="image/*" />
         </div>
         <div className="input-title">
           <label htmlFor="swal-input1">소속 이름</label>
