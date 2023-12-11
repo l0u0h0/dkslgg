@@ -2,7 +2,7 @@
 
 ---
 
-## 프로젝트 소개
+## [프로젝트 소개]
 
 ![image](https://github.com/l0u0h0/dkslgg/assets/72871841/35739041-e811-490d-81e5-12fd76810836)
 
@@ -13,7 +13,7 @@
 
 ---
 
-## 팀원 소개
+## [팀원 소개]
 
 | 이름   | 역할    | ID                                          |
 | ------ | ------- | ------------------------------------------- |
@@ -26,6 +26,36 @@
 
 ---
 
-## 서비스 아키텍쳐
+## [서비스 아키텍쳐]
 
 ![image](https://github.com/l0u0h0/dkslgg/assets/72871841/c8df16dc-5709-4376-86b1-7ff538584112)
+
+---
+
+## [사용 언어 및 개발환경]
+
+### FE
+
+- React.js, Jotai, JavaScript, Styled-Components, Axios, pnpm, Vite
+- 현재 JS => TS 리팩토링 진행중
+
+### BE
+
+- Java, SpringBoot, Spring-Security, MySQL
+- Python, FastAPI
+
+### Server
+
+- AWS EC2
+- Docker
+- Jenkins
+
+---
+
+## [실행화면]
+
+![실행화면 1](exec/GroupMain.png)
+
+![실행화면 2](exec/GroupSearch.png)
+
+![실행화면 3](exec/GroupCreate.png)
