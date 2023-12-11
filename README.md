@@ -58,8 +58,8 @@
 
 ## [실행화면]
 
-![실행화면 1](exec/GroupMain.png)
+![실행화면 1](document/GroupMain.png)
 
-![실행화면 2](exec/GroupSearch.png)
+![실행화면 2](document/GroupSearch.png)
 
-![실행화면 3](exec/GroupCreate.png)
+![실행화면 3](document/GroupCreate.png)
