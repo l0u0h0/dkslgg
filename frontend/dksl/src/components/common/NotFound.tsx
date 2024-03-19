@@ -98,7 +98,8 @@ const NotFound = () => {
         </div>
         <div>
           <h1>
-            404 <br /> Page Not Found!
+            404 Error!
+            <br /> 페이지를 찾을 수 없습니다!
           </h1>
           <a className="btn-link" href="/">
             돌아가기

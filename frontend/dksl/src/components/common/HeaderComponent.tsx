@@ -1,6 +1,6 @@
 // React
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation, To } from 'react-router-dom';
 // Styled
 import * as S from '@/styles/common/header.style';
 // Service
@@ -9,23 +9,26 @@ import { signout } from '../../services/UserService';
 import { useAuth } from '../../jotai/auth';
 // Swal
 import Swal from 'sweetalert2';
+// Type
+import { IUserToken } from '@/types/service/types';
 
 const HeaderComponent = () => {
   const auth = useAuth();
-  const search = useRef();
+  const search = useRef<HTMLInputElement | null>(null);
   const url = useLocation();
   const navigate = useNavigate();
   const token = useMemo(() => (auth ? auth : null), [auth]);
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState<IUserToken | null>(null);
+
   useEffect(() => {
     setUser(token);
   }, [token]);
 
-  const setNavigate = (url) => {
+  const setNavigate = (url: To) => {
     navigate(url);
   };
 
-  const onSearch = (name) => {
+  const onSearch = (name: string | null) => {
     if (!name) {
       Swal.fire({
         title: 'Error',
@@ -49,6 +52,22 @@ const HeaderComponent = () => {
 
   const logout = async () => {
     const data = await signout();
+
+    if (data === undefined) {
+      Swal.fire({
+        title: '로그아웃',
+        text: '로그아웃 실패',
+        icon: 'error',
+        iconColor: '#b20000',
+        confirmButtonColor: '#6E8387',
+        confirmButtonText: '확인',
+      }).then((res) => {
+        if (res.isConfirmed) {
+          location.reload();
+        }
+      });
+      return;
+    }
 
     if (data.status == 200) {
       Swal.fire({
@@ -86,7 +105,9 @@ const HeaderComponent = () => {
             <input placeholder="소환사명 입력하기" ref={search} />
             <img
               src="/image/search.svg"
-              onClick={() => onSearch(search.current.value)}
+              onClick={() =>
+                onSearch(search && search.current ? search.current.value : null)
+              }
             />
           </div>
         )}

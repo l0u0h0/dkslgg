@@ -21,3 +21,15 @@ export interface ISigninUser {
   clientId: string;
   password: string;
 }
+
+export interface IUserToken {
+  name: string;
+  tier: {
+    id: string;
+    name: string;
+    orderNum: number;
+  };
+  rank: number;
+  profileIconId: number;
+  level: number;
+}
