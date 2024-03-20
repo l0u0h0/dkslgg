@@ -1,7 +1,14 @@
 // Styled
 import * as S from '@/styles/group/detail.style';
+// Type
+import { GroupDetailProps } from '@/types/component/group.types';
 
-const GroupDetailComponent = ({ detailList, getByteToImage, auth, onJoinGroup }) => {
+const GroupDetailComponent: React.FC<GroupDetailProps> = ({
+  detailList,
+  getByteToImage,
+  auth,
+  onJoinGroup,
+}) => {
   return (
     <S.DetailLayout>
       <S.DetailContainer>
@@ -53,7 +60,9 @@ const GroupDetailComponent = ({ detailList, getByteToImage, auth, onJoinGroup })
                   이미 가입되셨습니다.
                 </button>
               ) : (
-                <button className="group-join" onClick={onJoinGroup}>이 소속에 가입하기</button>
+                <button className="group-join" onClick={onJoinGroup}>
+                  이 소속에 가입하기
+                </button>
               )
             ) : (
               <button className="group-join" disabled>
@@ -100,7 +109,7 @@ const GroupDetailComponent = ({ detailList, getByteToImage, auth, onJoinGroup })
                 <div className="table-body">
                   {detailList.currentSummoner && (
                     <div className="table-row current">
-                      <p className="rank">{detailList.currentSummoner.rank}</p>
+                      <p className="rank">{`${detailList.currentSummoner.rank}`}</p>
                       <div className="member-name">
                         <img
                           className="image"
@@ -108,7 +117,7 @@ const GroupDetailComponent = ({ detailList, getByteToImage, auth, onJoinGroup })
                           alt="!"
                         />
                         <p className="member-level">
-                          {detailList.currentSummoner.level}레벨
+                          {`${detailList.currentSummoner.level}`}레벨
                         </p>
                         {detailList.currentSummoner.name}
                       </div>
@@ -116,7 +125,7 @@ const GroupDetailComponent = ({ detailList, getByteToImage, auth, onJoinGroup })
                         {detailList.currentSummoner.tier.name}
                       </p>
                       <p className="member-persent">
-                        {detailList.currentSummoner.tier.orderNum}%
+                        {`${detailList.currentSummoner.tier.orderNum}`}%
                       </p>
                     </div>
                   )}
@@ -130,11 +139,17 @@ const GroupDetailComponent = ({ detailList, getByteToImage, auth, onJoinGroup })
                           src={`http://ddragon.leagueoflegends.com/cdn/13.19.1/img/profileicon/${e.profileIconId}.png`}
                           alt="!"
                         />
-                        <p className="member-level">{e.level}레벨</p>
+                        <p className="member-level">{`${e.level}`}레벨</p>
                         {e.name}
                       </div>
                       <p className="member-tier">{e.tier.name}</p>
-                      <p className="member-persent">{101 - Math.floor(((i+1) / detailList.summonerResponse.length) * 100)}%</p>
+                      <p className="member-persent">
+                        {101 -
+                          Math.floor(
+                            ((i + 1) / detailList.summonerResponse.length) * 100
+                          )}
+                        %
+                      </p>
                     </div>
                   ))}
                 </div>

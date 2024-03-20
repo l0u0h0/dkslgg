@@ -5,14 +5,15 @@ import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 // Component
 import LoadingComponent from '../common/LoadingComponent';
+import { GroupMainProps } from '@/types/component/group.types';
 
-const GroupMainComponent = ({
+const GroupMainComponent: React.FC<GroupMainProps> = ({
   groupList,
   createGroup,
   onSearch,
   getByteToImage,
 }) => {
-  const search = useRef();
+  const search = useRef<HTMLInputElement | null>(null);
 
   return (
     <S.GroupMainLayout>
@@ -53,7 +54,7 @@ const GroupMainComponent = ({
                 <p>최근 소환사가 가입한 소속에 대한 정보가 없습니다..</p>
               )
             ) : (
-              <LoadingComponent />
+              <LoadingComponent white={false} />
             )}
           </div>
         </div>
@@ -62,7 +63,9 @@ const GroupMainComponent = ({
             <input placeholder="소속명 입력하기" ref={search} />
             <img
               src="/image/search.svg"
-              onClick={() => onSearch(search.current.value)}
+              onClick={() =>
+                onSearch(search && search.current ? search.current.value : null)
+              }
             />
           </div>
           <div className="result-box">
@@ -83,7 +86,7 @@ const GroupMainComponent = ({
                   </div>
                 ))
               ) : (
-                <LoadingComponent />
+                <LoadingComponent white={false} />
               )}
             </div>
           </div>

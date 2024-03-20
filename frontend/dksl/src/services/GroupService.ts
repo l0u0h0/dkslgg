@@ -49,7 +49,6 @@ const searchGroup = async (word: string) => {
 };
 
 const groupDetail = async (name: string, hasToken: boolean) => {
-  console.log('service in : ', name, hasToken);
   try {
     if (hasToken) {
       const response = await auth.get(`/team/${name}`);
@@ -91,7 +90,7 @@ const groupLeave = async (name: string) => {
       console.error(error);
     }
   }
-}
+};
 
 const getSummonerGroup = async (name: string) => {
   try {
@@ -105,6 +104,14 @@ const getSummonerGroup = async (name: string) => {
     }
     return 'NoData';
   }
-}
+};
 
-export { getGroupList, setNewGroup, searchGroup, groupDetail, groupLeave, getSummonerGroup, joinGroup };
+export {
+  getGroupList,
+  setNewGroup,
+  searchGroup,
+  groupDetail,
+  groupLeave,
+  getSummonerGroup,
+  joinGroup,
+};

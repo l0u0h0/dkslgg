@@ -20,12 +20,17 @@ import {
 } from '../services/GroupService';
 // Jotai
 import { useAuth } from '../jotai/auth';
+// Type
+import {
+  IGroupDetailList,
+  IGroupTeamList,
+} from '@/types/component/group.types';
 
 const MySWal = withReactContent(Swal);
 
 const GroupContainer = () => {
-  const [teamList, setTeamList] = useState({});
-  const [detailList, setDetailList] = useState({ name: '' });
+  const [teamList, setTeamList] = useState<IGroupTeamList | null>(null);
+  const [detailList, setDetailList] = useState<IGroupDetailList | null>(null);
   const [path, setPath] = useState('');
   const auth = useAuth();
   const url = useLocation();
@@ -88,10 +93,33 @@ const GroupContainer = () => {
     return URL.createObjectURL(img);
   }, []);
 
-  const onSearch = useCallback(async (word: string) => {
+  const onSearch = useCallback(async (word: string | null) => {
+    if (!word) {
+      Swal.fire({
+        title: 'Error',
+        text: '검색어가 입력되지 않았습니다!',
+        icon: 'error',
+        confirmButtonColor: 'var(--maincolor-depth1)',
+      });
+      return;
+    } else if (word.includes('/')) {
+      Swal.fire({
+        title: 'Error',
+        text: '잘못된 검색어입니다!',
+        icon: 'error',
+        confirmButtonColor: 'var(--maincolor-depth1)',
+      });
+      return;
+    }
+
     const data = await searchGroup(word);
 
-    if (data && data.status == 200) {
+    if (data && data.status == 200 && teamList) {
+      const newList: IGroupTeamList = {
+        ...teamList,
+        teamList: data.data,
+      };
+
       Swal.fire({
         title: '검색 완료',
         text: '검색 요청이 완료되었습니다.',
@@ -100,10 +128,7 @@ const GroupContainer = () => {
         confirmButtonColor: '#6E8387',
         confirmButtonText: '확인',
       });
-      setTeamList({
-        ...teamList,
-        teamList: data.data,
-      });
+      setTeamList(newList);
     }
   }, []);
 
