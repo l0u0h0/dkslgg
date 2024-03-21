@@ -1,5 +1,5 @@
 // React
-import { useCallback } from 'react';
+import React, { useCallback } from 'react';
 // Styled
 import * as S from '../../styles/main/ranking.style';
 // Component
