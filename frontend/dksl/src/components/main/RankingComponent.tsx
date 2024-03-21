@@ -4,16 +4,18 @@ import { useCallback } from 'react';
 import * as S from '../../styles/main/ranking.style';
 // Component
 import LoadingComponent from '../common/LoadingComponent';
+// Type
+import { RankingProps } from '@/types/component/main.types';
 
-const RankingComponent = ({
+const RankingComponent: React.FC<RankingProps> = ({
   hofTab,
   setHofTab,
-  hofData,
+  rankData,
   rankTab,
   setRankTab,
-  rankData,
+  groupRankData,
 }) => {
-  const getByteToImage = useCallback((imgSrc) => {
+  const getByteToImage = useCallback((imgSrc: string) => {
     const binaryString = atob(imgSrc);
     const bytes = new Uint8Array(binaryString.length);
 
@@ -44,8 +46,8 @@ const RankingComponent = ({
           </S.TabItem>
         </S.TabBox>
         <S.ContentTable>
-          {hofData ? (
-            hofData[hofTab].map((e, i) => (
+          {rankData ? (
+            rankData[hofTab].map((e, i) => (
               <S.ContentItem key={i}>
                 <p className="idx">{hofTab * 10 + (i + 1)}</p>
                 <p className="name">{e.summonerName}</p>
@@ -53,7 +55,7 @@ const RankingComponent = ({
               </S.ContentItem>
             ))
           ) : (
-            <LoadingComponent />
+            <LoadingComponent white={false} />
           )}
         </S.ContentTable>
       </div>
@@ -90,8 +92,8 @@ const RankingComponent = ({
               <b>평균 티어</b>
             </p>
           </S.ContentItem>
-          {rankData && rankTab == 0 ? (
-            rankData.tierTeamList.map((e, i) => (
+          {groupRankData && rankTab == 0 ? (
+            groupRankData.tierTeamList.map((e, i) => (
               <S.ContentItem key={i}>
                 <p className="idx">{i + 1}</p>
                 <img className="image" src={getByteToImage(e.img)} />
@@ -99,8 +101,8 @@ const RankingComponent = ({
                 <p className="tier">{e.avgTier.name}</p>
               </S.ContentItem>
             ))
-          ) : rankData && rankTab == 1 ? (
-            rankData.memberCountTeamList.map((e, i) => (
+          ) : groupRankData && rankTab == 1 ? (
+            groupRankData.memberCountTeamList.map((e, i) => (
               <S.ContentItem key={i}>
                 <p className="idx">{i + 1}</p>
                 <img className="image" src={getByteToImage(e.img)} />
@@ -108,8 +110,8 @@ const RankingComponent = ({
                 <p className="tier">{e.avgTier.name}</p>
               </S.ContentItem>
             ))
-          ) : rankData && rankTab == 2 ? (
-            rankData.recentTeamList.map((e, i) => (
+          ) : groupRankData && rankTab == 2 ? (
+            groupRankData.recentTeamList.map((e, i) => (
               <S.ContentItem key={i}>
                 <p className="idx">{i + 1}</p>
                 <img className="image" src={getByteToImage(e.img)} />
@@ -118,7 +120,7 @@ const RankingComponent = ({
               </S.ContentItem>
             ))
           ) : (
-            <LoadingComponent />
+            <LoadingComponent white={false} />
           )}
         </S.ContentTable>
       </div>

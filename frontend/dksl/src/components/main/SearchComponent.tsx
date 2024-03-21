@@ -9,9 +9,9 @@ import Swal from 'sweetalert2';
 const SearchComponent = () => {
   const num = useMemo(() => Math.floor(Math.random() * 10) + 1, []);
   const navigate = useNavigate();
-  const search = useRef();
+  const search = useRef<HTMLInputElement | null>(null);
 
-  const onSearch = (name) => {
+  const onSearch = (name: string | null) => {
     if (!name) {
       Swal.fire({
         title: 'Error',
@@ -29,7 +29,7 @@ const SearchComponent = () => {
       });
       return;
     }
-    
+
     navigate(`/record/${name}`);
   };
 
@@ -44,7 +44,9 @@ const SearchComponent = () => {
             <input placeholder="소환사명 입력하기" ref={search} />
             <img
               src="image/search.svg"
-              onClick={() => onSearch(search.current.value)}
+              onClick={() =>
+                onSearch(search && search.current ? search.current.value : null)
+              }
             />
           </div>
         </div>
