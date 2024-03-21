@@ -12,8 +12,10 @@
 - 전적 분석을 통해 플레이 캐릭터 및 프로게이머 등 유명인을 추천 받을 수 있는 서비스
 - 소속 가입 및 생성으로 서로의 순위를 비교할 수 있는 웹 서비스
 - 📖 [프로젝트 진행 노션 링크](https://scarce-ant-23c.notion.site/SSAFY-e1aba1c77f3f4022ab2867b66f2f6078?pvs=4)
+- 📋 [Team Github 링크](https://github.com/Don-t-JIRA/dksl.gg)
 - 개발 기간
   - 2023.08.28 ~ 2023.10.06
+  - 2023.12 ~ Refactoring
 
 ---
 
@@ -21,7 +23,7 @@
 
 | 이름   | 역할    | Github                                      |
 | ------ | ------- | ------------------------------------------- |
-| 곽형석 | CI/CD   | [harvinat0r](https://github.com/harvinat0r) |
+| 곽형석 | Infra   | [harvinat0r](https://github.com/harvinat0r) |
 | 김태훈 | BE      | [huuuun](https://github.com/huuuun)         |
 | 신택수 | BE      | [novventa](https://github.com/novventa)     |
 | 유 영  | BE/팀장 | [babyyu0](https://github.com/babyyu0)       |

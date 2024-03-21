@@ -1,7 +1,12 @@
-import * as S from '@/styles/lbti/result.style';
+// React
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
+// Style
+import * as S from '@/styles/lbti/result.style';
+// Type
+import { LbtiResultProps } from '@/types/component/lbti.types';
 
-const LbtiResultComponent = ({ lbti }) => {
+const LbtiResultComponent: React.FC<LbtiResultProps> = ({ lbti }) => {
   const navigate = useNavigate();
   const lbtiStr = lbti
     ? lbti.firstTendency.initial +

@@ -1,6 +1,9 @@
+// Style
 import * as S from '@/styles/lbti/test.style';
+// Type
+import { LbtiTestProps } from '@/types/component/lbti.types';
 
-const LbtiTestComponent = ({
+const LbtiTestComponent: React.FC<LbtiTestProps> = ({
   questionList,
   index,
   setIndex,
@@ -8,7 +11,7 @@ const LbtiTestComponent = ({
   selectList,
   setSelectList,
 }) => {
-  const changeSelect = (id) => {
+  const changeSelect = (id: string) => {
     const tmp = selectList;
     tmp[index] = id;
     setSelectList([...tmp]);
@@ -28,17 +31,19 @@ const LbtiTestComponent = ({
           </div>
           <div className="radio-box">
             {questionList
-              ? questionList[index].answerList.map((e, i) => (
-                  <div className="radio-group" key={`${index}+${i}`}>
-                    <input
-                      type="radio"
-                      name={index}
-                      defaultChecked={e.id == selectList[index]}
-                      onChange={() => changeSelect(e.id)}
-                    />
-                    <label>{e.paragraph}</label>
-                  </div>
-                ))
+              ? questionList[index].answerList.map(
+                  (e: { id: string; paragraph: string }, i: number) => (
+                    <div className="radio-group" key={`${index}+${i}`}>
+                      <input
+                        type="radio"
+                        name={`${index}`}
+                        defaultChecked={e.id == selectList[index]}
+                        onChange={() => changeSelect(e.id)}
+                      />
+                      <label>{e.paragraph}</label>
+                    </div>
+                  )
+                )
               : null}
           </div>
           <div className="btn-box">

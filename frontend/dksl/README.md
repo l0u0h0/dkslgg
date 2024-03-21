@@ -53,6 +53,7 @@
 - `src/styles` : Styled-Components 컴포난트 파일들 모아놓는
 
 ```
+
 📦versionTest
  ┣ 📂config
  ┃ ┗ 📂jest

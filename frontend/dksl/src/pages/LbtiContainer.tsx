@@ -15,12 +15,12 @@ import { useAuth } from '../jotai/auth';
 const LbtiContainer = () => {
   const navigate = useNavigate();
   const auth = useAuth();
-  const [path, setPath] = useState(null);
+  const [path, setPath] = useState<string | null>(null);
   const url = useLocation();
   const [index, setIndex] = useState(0);
   const [questionList, setQuestionList] = useState(null);
   const [lbti, setLbti] = useState(null);
-  const [selectList, setSelectList] = useState([]);
+  const [selectList, setSelectList] = useState<any[]>([]);
 
   useEffect(() => {
     const fetchAllQuestionData = async () => {
