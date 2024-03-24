@@ -4,7 +4,7 @@ import { atomWithDefault } from 'jotai/utils';
 // Service
 import { getSummonerGroup } from '../services/GroupService';
 
-const getGroup = async (name: string) => {
+const getGroup: any = async (name: string) => {
   const data = await getSummonerGroup(name);
 
   if (data == 'NoData') return 'NoData';

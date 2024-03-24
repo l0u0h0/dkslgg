@@ -1,5 +1,5 @@
 // React
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 // Styled
 import * as S from '@/styles/record/tabanalyze.style';
 // Chart
@@ -12,19 +12,21 @@ import { useGroup } from '../../../jotai/group';
 // Data
 import { star } from '../../../data/star';
 
-const openLink = (url) => {
+const openLink = (url: string) => {
   window.open(url, '_blank');
 };
 
-const TabAnalyzeComponent = ({ fetchData }) => {
+const TabAnalyzeComponent: React.FC<{
+  fetchData: (championName: string) => any;
+}> = ({ fetchData }) => {
   const analyze = useAnalyze();
   // LBTI Data get
   const group = useGroup();
-  const [champ, setChamp] = useState(null);
-  const [chart, setChart] = useState(null);
-  const [lbti, setLbti] = useState(null);
+  const [champ, setChamp] = useState<any | null>(null);
+  const [chart, setChart] = useState<any | null>(null);
+  const [lbti, setLbti] = useState<any | null>(null);
   useEffect(() => {
-    if (analyze && analyze != 'NoData') {
+    if (analyze && typeof analyze != 'string') {
       const data = analyze.cluster;
       setChart([
         {
@@ -67,23 +69,25 @@ const TabAnalyzeComponent = ({ fetchData }) => {
     }
   }, [analyze]);
   useEffect(() => {
-    const arr = analyze.chapmions;
+    if (analyze && typeof analyze != 'string') {
+      const arr = analyze.chapmions;
 
-    const fetchChampionData = async () => {
-      const newArr = [];
+      const fetchChampionData = async () => {
+        const newArr: any[] = [];
 
-      for (const championName of arr) {
-        const championData = await fetchData(championName);
-        if (championData) {
-          newArr.push(championData);
+        for (const championName of arr) {
+          const championData = await fetchData(championName);
+          if (championData) {
+            newArr.push(championData);
+          }
         }
+
+        setChamp(newArr);
+      };
+
+      if (champ === null) {
+        fetchChampionData();
       }
-
-      setChamp(newArr);
-    };
-
-    if (champ === null) {
-      fetchChampionData();
     }
   }, [analyze, champ, fetchData]);
 
@@ -91,12 +95,13 @@ const TabAnalyzeComponent = ({ fetchData }) => {
     if (group && group.lbti) {
       const newObj = {
         ...group.lbti,
-        lbtiStr: group.lbti.firstTendency.initial +
-        group.lbti.secondTendency.initial +
-        group.lbti.thirdTendency.initial +
-        group.lbti.fourthTendency.initial
-      }
-      setLbti((prevLbti) => {
+        lbtiStr:
+          group.lbti.firstTendency.initial +
+          group.lbti.secondTendency.initial +
+          group.lbti.thirdTendency.initial +
+          group.lbti.fourthTendency.initial,
+      };
+      setLbti((prevLbti: any) => {
         if (prevLbti == newObj) {
           return prevLbti;
         }
@@ -105,9 +110,9 @@ const TabAnalyzeComponent = ({ fetchData }) => {
     }
   }, [group]);
 
-  if (analyze == null) return <LoadingComponent />;
+  if (analyze == null) return <LoadingComponent white={false} />;
 
-  return analyze == 'NoData' ? (
+  return typeof analyze == 'string' ? (
     <S.TabAnalyzeLayout>
       <S.CenterLayout>
         <S.NoDataLayout>
@@ -122,36 +127,30 @@ const TabAnalyzeComponent = ({ fetchData }) => {
           <p className="title">&#128195; 롤BTI 분석</p>
           {lbti ? (
             <div className="analyze-box">
-              <img src={`https://ddragon.leagueoflegends.com/cdn/13.19.1/img/champion/${lbti.championName}.png`} />
+              <img
+                src={`https://ddragon.leagueoflegends.com/cdn/13.19.1/img/champion/${lbti.championName}.png`}
+              />
               <div className="subtitle">
                 <p>{lbti.name}</p>
                 <p className="lbti">💡 {lbti.lbtiStr}</p>
               </div>
               <div className="tag-box">
                 <S.TagItem $bg="red">
-                  <div className="text">
-                    {lbti.firstTendency.name}
-                  </div>
+                  <div className="text">{lbti.firstTendency.name}</div>
                 </S.TagItem>
                 <S.TagItem $bg="green">
-                  <div className="text">
-                    {lbti.secondTendency.name}
-                  </div>
+                  <div className="text">{lbti.secondTendency.name}</div>
                 </S.TagItem>
                 <S.TagItem $bg="violet">
-                  <div className="text">
-                    {lbti.thirdTendency.name}
-                  </div>
+                  <div className="text">{lbti.thirdTendency.name}</div>
                 </S.TagItem>
                 <S.TagItem $bg="var(--maincolor-depth1)">
-                  <div className="text">
-                    {lbti.fourthTendency.name}
-                  </div>
+                  <div className="text">{lbti.fourthTendency.name}</div>
                 </S.TagItem>
               </div>
             </div>
           ) : (
-            <LoadingComponent />
+            <LoadingComponent white={false} />
           )}
         </S.AnalyzeCard>
         <S.GraphCard>
@@ -178,7 +177,7 @@ const TabAnalyzeComponent = ({ fetchData }) => {
                 />
               </div>
             ) : (
-              <LoadingComponent />
+              <LoadingComponent white={false} />
             )}
             <div className="desc">
               <p className="cluster-name">{analyze.cluster.name}</p>
@@ -192,30 +191,40 @@ const TabAnalyzeComponent = ({ fetchData }) => {
           <p className="title">&#128077; 이 챔피언을 추천해요!</p>
           <div className="champion-box">
             {champ ? (
-              champ.map((e, i) => (
-                <div className="container" key={`champion_card_${i}`}>
-                  <div
-                    className="card front"
-                    style={{
-                      backgroundImage: `url(http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${e.en_name}_0.jpg)`,
-                    }}
-                  ></div>
-                  <div className="card back">
-                    <div className="name">{e.name}</div>
-                    <p className="tags">
-                      {e.tags.map((v, j) => {
-                        if (j == e.tags.length - 1) return v;
-                        else return v + ', ';
-                      })}
-                    </p>
-                    <p className="tips">
-                      {e.tips[Math.floor(Math.random() * e.tips.length)]}
-                    </p>
+              champ.map(
+                (
+                  e: {
+                    en_name: any;
+                    name: any;
+                    tags: any[];
+                    tips: string | any[];
+                  },
+                  i: any
+                ) => (
+                  <div className="container" key={`champion_card_${i}`}>
+                    <div
+                      className="card front"
+                      style={{
+                        backgroundImage: `url(http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${e.en_name}_0.jpg)`,
+                      }}
+                    ></div>
+                    <div className="card back">
+                      <div className="name">{e.name}</div>
+                      <p className="tags">
+                        {e.tags.map((v, j) => {
+                          if (j == e.tags.length - 1) return v;
+                          else return v + ', ';
+                        })}
+                      </p>
+                      <p className="tips">
+                        {e.tips[Math.floor(Math.random() * e.tips.length)]}
+                      </p>
+                    </div>
                   </div>
-                </div>
-              ))
+                )
+              )
             ) : (
-              <LoadingComponent />
+              <LoadingComponent white={false} />
             )}
           </div>
         </S.ChampionCard>
@@ -238,7 +247,7 @@ const TabAnalyzeComponent = ({ fetchData }) => {
               </div>
             </div>
           ) : (
-            <LoadingComponent />
+            <LoadingComponent white={false} />
           )}
         </S.FamousCard>
       </S.CenterLayout>

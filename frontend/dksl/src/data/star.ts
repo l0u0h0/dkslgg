@@ -1,4 +1,13 @@
-export const star = {
+interface Player {
+  img: string;
+  youtube: string;
+}
+
+interface StarPlayers {
+  [key: string]: Player;
+}
+
+export const star: StarPlayers = {
   Baekk: {
     img: 'Baekk.webp',
     youtube: 'https://www.youtube.com/@Baekk.',
