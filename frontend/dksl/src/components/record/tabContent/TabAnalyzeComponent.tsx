@@ -11,20 +11,27 @@ import { useAnalyze } from '../../../jotai/analyze';
 import { useGroup } from '../../../jotai/group';
 // Data
 import { star } from '../../../data/star';
+import {
+  FetchChampDataType,
+  fetchChampDataReturnType,
+} from '@/types/component/record.types';
 
 const openLink = (url: string) => {
   window.open(url, '_blank');
 };
 
 const TabAnalyzeComponent: React.FC<{
-  fetchData: (championName: string) => any;
+  fetchData: FetchChampDataType;
 }> = ({ fetchData }) => {
   const analyze = useAnalyze();
   // LBTI Data get
   const group = useGroup();
-  const [champ, setChamp] = useState<any | null>(null);
-  const [chart, setChart] = useState<any | null>(null);
+  const [champ, setChamp] = useState<fetchChampDataReturnType[] | null>(null);
+  const [chart, setChart] = useState<{ id: string; value: number }[] | null>(
+    null
+  );
   const [lbti, setLbti] = useState<any | null>(null);
+
   useEffect(() => {
     if (analyze && typeof analyze != 'string') {
       const data = analyze.cluster;
@@ -68,12 +75,13 @@ const TabAnalyzeComponent: React.FC<{
       ]);
     }
   }, [analyze]);
+
   useEffect(() => {
     if (analyze && typeof analyze != 'string') {
       const arr = analyze.chapmions;
 
       const fetchChampionData = async () => {
-        const newArr: any[] = [];
+        const newArr: fetchChampDataReturnType[] = [];
 
         for (const championName of arr) {
           const championData = await fetchData(championName);
@@ -191,38 +199,28 @@ const TabAnalyzeComponent: React.FC<{
           <p className="title">&#128077; 이 챔피언을 추천해요!</p>
           <div className="champion-box">
             {champ ? (
-              champ.map(
-                (
-                  e: {
-                    en_name: any;
-                    name: any;
-                    tags: any[];
-                    tips: string | any[];
-                  },
-                  i: any
-                ) => (
-                  <div className="container" key={`champion_card_${i}`}>
-                    <div
-                      className="card front"
-                      style={{
-                        backgroundImage: `url(http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${e.en_name}_0.jpg)`,
-                      }}
-                    ></div>
-                    <div className="card back">
-                      <div className="name">{e.name}</div>
-                      <p className="tags">
-                        {e.tags.map((v, j) => {
-                          if (j == e.tags.length - 1) return v;
-                          else return v + ', ';
-                        })}
-                      </p>
-                      <p className="tips">
-                        {e.tips[Math.floor(Math.random() * e.tips.length)]}
-                      </p>
-                    </div>
+              champ.map((e, i) => (
+                <div className="container" key={`champion_card_${i}`}>
+                  <div
+                    className="card front"
+                    style={{
+                      backgroundImage: `url(http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${e.en_name}_0.jpg)`,
+                    }}
+                  ></div>
+                  <div className="card back">
+                    <div className="name">{e.name}</div>
+                    <p className="tags">
+                      {e.tags.map((v, j) => {
+                        if (j == e.tags.length - 1) return v;
+                        else return v + ', ';
+                      })}
+                    </p>
+                    <p className="tips">
+                      {e.tips[Math.floor(Math.random() * e.tips.length)]}
+                    </p>
                   </div>
-                )
-              )
+                </div>
+              ))
             ) : (
               <LoadingComponent white={false} />
             )}

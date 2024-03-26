@@ -169,6 +169,18 @@ export interface IPieData {
   value: number;
 }
 
+export type fetchChampDataReturnType = {
+  en_name: string;
+  name: string;
+  title: string;
+  tags: string[];
+  tips: string[];
+};
+
+export type FetchChampDataType = (
+  championName: string
+) => Promise<fetchChampDataReturnType | null>;
+
 // RecordBodyComponent Props Type
 export interface RecordBodyProps {
   recorddata: IFormatRecordData | null;
@@ -178,13 +190,7 @@ export interface RecordBodyProps {
   setTab: React.Dispatch<React.SetStateAction<number>>;
   leaveTeam: (name: string) => Promise<void>;
   getByteToImage: (imgSrc: string) => string;
-  fetchChampData: (championName: string) => Promise<{
-    en_name: string;
-    name: any;
-    title: any;
-    tags: any;
-    tips: any;
-  } | null>;
+  fetchChampData: FetchChampDataType;
 }
 
 // Record Jotai Service Data Type
