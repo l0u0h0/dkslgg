@@ -10,19 +10,32 @@ import LoadingComponent from '../../common/LoadingComponent';
 // Jotai
 import { useAuth } from '../../../jotai/auth';
 import { useGroup } from '../../../jotai/group';
+// Type
+import { ITabGroupComponentProps } from '@/types/component/tab/tabGroup.types';
+import { IGroupDetailList } from '@/types/component/group.types';
 
 const animatedComponent = makeAnimated();
 
-const TabGroupComponent = ({ leave, image }) => {
+const TabGroupComponent: React.FC<ITabGroupComponentProps> = ({
+  leave,
+  image,
+}) => {
   const auth = useAuth();
   const group = useGroup();
-  const [options, setOptions] = useState([]);
-  const [currentIdx, setCurrentIdx] = useState({ value: 0, label: '' });
-  const [currentGroup, setCurrentGroup] = useState(null);
+  const [options, setOptions] = useState<{ value: number; label: string }[]>(
+    []
+  );
+  const [currentIdx, setCurrentIdx] = useState<{
+    value: number;
+    label: string;
+  }>({ value: 0, label: '' });
+  const [currentGroup, setCurrentGroup] = useState<IGroupDetailList | null>(
+    null
+  );
 
   useEffect(() => {
     if (group != 'NoData') {
-      const arr = group.teamList.map((e, i) => {
+      const arr = group.teamList.map((e: any, i: number) => {
         return {
           value: i,
           label: e.name,
@@ -100,7 +113,7 @@ const TabGroupComponent = ({ leave, image }) => {
               </div>
             ) : (
               <div className="group-profile">
-                <LoadingComponent />
+                <LoadingComponent white={false} />
               </div>
             )}
             <div className="group-ranking">
@@ -114,20 +127,29 @@ const TabGroupComponent = ({ leave, image }) => {
                   </div>
                 </div>
                 <div className="table-body">
-                  {group.teamRankList.map((e, i) => (
-                    <div className="table-row" key={`group_rank_${i}`}>
-                      <p className="rank">{i + 1}</p>
-                      <div className="group-name">
-                        <img
-                          className="image"
-                          src={image(e.img)}
-                          alt="group-profile_img"
-                        />
-                        {e.name}
+                  {group.teamRankList.map(
+                    (
+                      e: {
+                        img: string;
+                        name: string;
+                        avgTier: { name: string };
+                      },
+                      i: number
+                    ) => (
+                      <div className="table-row" key={`group_rank_${i}`}>
+                        <p className="rank">{i + 1}</p>
+                        <div className="group-name">
+                          <img
+                            className="image"
+                            src={image(e.img)}
+                            alt="group-profile_img"
+                          />
+                          {e.name}
+                        </div>
+                        <p className="group-tier">{e.avgTier.name}</p>
                       </div>
-                      <p className="group-tier">{e.avgTier.name}</p>
-                    </div>
-                  ))}
+                    )
+                  )}
                 </div>
               </div>
             </div>
@@ -152,20 +174,6 @@ const TabGroupComponent = ({ leave, image }) => {
                   </div>
                 </div>
                 <div className="table-body">
-                  {/* <div className="table-row current">
-                    <p className="rank">297</p>
-                    <div className="member-name">
-                      <img
-                        className="image"
-                        src="/image/lbti-img.svg"
-                        alt="member-profile_img"
-                      />
-                      <p className="member-level">123레벨</p>
-                      갓뎀뻑
-                    </div>
-                    <p className="member-tier">Unranked</p>
-                    <p className="member-persent">99%</p>
-                  </div> */}
                   {currentGroup ? (
                     currentGroup.summonerResponse.map((e, i) => (
                       <div className="table-row" key={`summoner_rank_${i}`}>
@@ -191,7 +199,7 @@ const TabGroupComponent = ({ leave, image }) => {
                       </div>
                     ))
                   ) : (
-                    <LoadingComponent />
+                    <LoadingComponent white={false} />
                   )}
                 </div>
               </div>
@@ -199,7 +207,7 @@ const TabGroupComponent = ({ leave, image }) => {
           </S.RightLayout>
         </>
       ) : (
-        <LoadingComponent />
+        <LoadingComponent white={false} />
       )}
     </S.TabGroupLayout>
   );

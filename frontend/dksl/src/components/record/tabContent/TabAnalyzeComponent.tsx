@@ -11,6 +11,7 @@ import { useAnalyze } from '../../../jotai/analyze';
 import { useGroup } from '../../../jotai/group';
 // Data
 import { star } from '../../../data/star';
+// Type
 import {
   FetchChampDataType,
   fetchChampDataReturnType,
