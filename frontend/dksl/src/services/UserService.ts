@@ -68,7 +68,7 @@ const signout = async () => {
 const getMember = async () => {
   try {
     const response = await auth.get('/member');
-    return response;
+    return response.data;
   } catch (error) {
     if (axios.isAxiosError(error) && error.response) {
       console.error(error.response);
