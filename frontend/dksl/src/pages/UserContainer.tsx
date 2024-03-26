@@ -7,12 +7,11 @@ import SignupComponent from '../components/user/SignupComponent';
 // Service
 import { register } from '../services/UserService';
 import { signIn } from '../services/UserService';
+import { userValidationCheck } from '../services/ValidationService';
 // Sweetalert
 import Swal from 'sweetalert2';
 // Jotai
 import { useAuth, useUpdateAuth } from '../jotai/auth';
-// Service
-import { userValidationCheck } from '../services/ValidationService';
 
 const UserContainer = () => {
   const navigate = useNavigate();
@@ -36,7 +35,7 @@ const UserContainer = () => {
   const updateAuth = useUpdateAuth();
 
   const onSignup = useCallback(async () => {
-    const validation = await userValidationCheck(signup);
+    const validation = userValidationCheck(signup);
     if (validation != 'SUCCESS') {
       Swal.fire({
         title: '알림',

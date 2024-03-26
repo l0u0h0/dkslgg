@@ -1,5 +1,5 @@
 // React
-import { useMemo, useState, useEffect } from 'react';
+import { useMemo, useState, useEffect, useRef } from 'react';
 // Styled
 import * as S from '@/styles/user/signup.style';
 // Swal
@@ -14,7 +14,25 @@ import {
   pwValidationCheck,
 } from '../../services/ValidationService';
 
-const SignupComponent = ({ getter, setter, onSignup }) => {
+const SignupComponent: React.FC<{
+  getter: {
+    clientId: string;
+    password: string;
+    name: string;
+    passwordCheck: string;
+    phone: string;
+    email: string;
+  };
+  setter: (args: {
+    clientId: string;
+    password: string;
+    name: string;
+    passwordCheck: string;
+    phone: string;
+    email: string;
+  }) => void;
+  onSignup: () => void;
+}> = ({ getter, setter, onSignup }) => {
   const num = useMemo(() => Math.floor(Math.random() * 5) + 1, []);
   const [checked, setChecked] = useState({
     name: false,
@@ -24,24 +42,30 @@ const SignupComponent = ({ getter, setter, onSignup }) => {
     phone: false,
     email: false,
   });
+  const infoElement = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
-    document.getElementById('info').addEventListener('mouseover', () => {
-      document.getElementById('info-label').style = 'opacity: 1';
-    });
-    document.getElementById('info').addEventListener('mouseleave', () => {
-      document.getElementById('info-label').style = 'opacity: 0';
-    });
-  });
+    const infoLabel = document.getElementById('info-label');
 
-  const onChange = (e) => {
+    if (infoElement && infoElement.current && infoLabel) {
+      infoElement.current.addEventListener('mouseover', () => {
+        infoLabel.style.opacity = '1';
+      });
+      infoElement.current.addEventListener('mouseleave', () => {
+        infoLabel.style.opacity = '0';
+      });
+    }
+  }, []);
+
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setter({
       ...getter,
       [name]: value,
     });
+
     let result = false;
-    let pwCheck = getter.passwordCheck;
+    let pwCheck = false;
     if (name == 'name') result = nameValidationCheck(value);
     else if (name == 'clientId') result = idValidationCheck(value);
     else if (name == 'password') {
@@ -55,18 +79,18 @@ const SignupComponent = ({ getter, setter, onSignup }) => {
     } else {
       result = pwEqualValidationCheck(getter.password, value);
     }
-    
+
     if (name == 'passwordCheck') {
       setChecked({
         ...checked,
         ['passwordCheck']: result,
-      })
+      });
     } else {
       setChecked({
         ...checked,
         [name]: result,
         ['passwordCheck']: pwCheck,
-      })
+      });
     }
   };
 
@@ -123,6 +147,7 @@ const SignupComponent = ({ getter, setter, onSignup }) => {
             id="info"
             className="info"
             src="/image/info.svg"
+            ref={infoElement}
             onClick={onInfo}
           />
           <p id="info-label" className="info-label">

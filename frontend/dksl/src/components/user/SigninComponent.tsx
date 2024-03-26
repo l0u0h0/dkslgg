@@ -3,11 +3,19 @@ import { useMemo } from 'react';
 // Styled
 import * as S from '@/styles/user/signin.style';
 
-const SigninComponent = ({ getter, setter, onSignIn }) => {
+const SigninComponent: React.FC<{
+  getter: {
+    clientId: string;
+    password: string;
+  };
+  setter: (args: { clientId: string; password: string }) => void;
+  onSignIn: () => void;
+}> = ({ getter, setter, onSignIn }) => {
   const num = useMemo(() => Math.floor(Math.random() * 5) + 1, []);
 
-  const onChange = (e) => {
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
+
     setter({
       ...getter,
       [name]: value,

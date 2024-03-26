@@ -4,7 +4,6 @@ import { IValidationUser } from '@/types/service/types';
 const emailVaildationCheck = (email: string) => {
   // email Checking
   const regexEmail = new RegExp(
-    // eslint-disable-next-line no-useless-escape
     /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
   );
   if (email.length == 0 || !regexEmail.test(email)) {
@@ -113,7 +112,6 @@ const userValidationCheck = (user: IValidationUser) => {
 
   // email Checking
   const regexEmail = new RegExp(
-    // eslint-disable-next-line no-useless-escape
     /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
   );
   const email = user.email;

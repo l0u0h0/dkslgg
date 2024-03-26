@@ -1,5 +1,3 @@
-// React
-import React from 'react';
 // Component
 import HeaderComponent from '../components/common/HeaderComponent';
 import TimelineComponent from '../components/arena/TimelineComponent';

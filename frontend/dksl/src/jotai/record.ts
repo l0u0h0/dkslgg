@@ -168,7 +168,7 @@ const formattingData: (
     }
   }
   const arr = record.match_histories.map((e) => {
-    let cur: number | undefined = undefined;
+    let cur: number = 0;
     let summary: {
       name: string;
       champ: string;
@@ -268,6 +268,8 @@ const formattingData: (
       });
     } else if (typeof cur === 'number') e[cur].play_time = match_ago;
 
+    const matchId = '';
+
     // 객체 배열로 리턴
     return {
       win,
@@ -276,6 +278,7 @@ const formattingData: (
       data: e,
       winner,
       loser,
+      matchId,
     };
   });
   const result = getDuoPlayer(arr, user);

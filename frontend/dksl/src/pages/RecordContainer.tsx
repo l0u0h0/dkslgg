@@ -22,14 +22,12 @@ import {
   RecordBodyProps,
 } from '@/types/component/record.types';
 
-// eslint-disable-next-line react/display-name
 const MemoizedProfileComponent = React.memo<{ data: IProfileData | null }>(
   ({ data }) => {
     return <ProfileComponent data={data} />;
   }
 );
 
-// eslint-disable-next-line react/display-name
 const MemoizedRecordBodyComponent = React.memo<RecordBodyProps>(
   ({
     recorddata,
