@@ -6,18 +6,22 @@ import * as S from '@/styles/record/profile.style';
 import LoadingComponent from '../common/LoadingComponent';
 // Jotai
 import { useGroup } from '../../jotai/group';
+import { IProfileData } from '@/types/component/record.types';
 
-const ProfileComponent = ({ data }) => {
+const ProfileComponent: React.FC<{ data: IProfileData | null }> = ({
+  data,
+}) => {
   const [lbti, setLbti] = useState(null);
   const group = useGroup();
   const num = useMemo(() => Math.floor(Math.random() * 6) + 1, []);
 
   useEffect(() => {
     if (group && group.lbti) {
-      const lbtiStr = group.lbti.firstTendency.initial +
-      group.lbti.secondTendency.initial +
-      group.lbti.thirdTendency.initial +
-      group.lbti.fourthTendency.initial;
+      const lbtiStr =
+        group.lbti.firstTendency.initial +
+        group.lbti.secondTendency.initial +
+        group.lbti.thirdTendency.initial +
+        group.lbti.fourthTendency.initial;
       setLbti((prevLbti) => {
         if (prevLbti == lbtiStr) {
           return prevLbti;
