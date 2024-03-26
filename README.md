@@ -42,8 +42,8 @@
 
 ### FE
 
-- React.js, Jotai, JavaScript, Styled-Components, Axios, pnpm, Vite
-- 현재 JS => TS 리팩토링 진행중
+- React.js, Jotai, TypeScript, Styled-Components, Axios, pnpm, Vite
+- `현재 리팩토링 진행중`
 
 ### BE
 
