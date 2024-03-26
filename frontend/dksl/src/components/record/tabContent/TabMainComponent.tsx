@@ -1,5 +1,5 @@
 // React
-import { useState } from 'react';
+import React, { useState } from 'react';
 // Styled
 import * as S from '@/styles/record/tabmain.style';
 // Select
@@ -9,6 +9,8 @@ import makeAnimated from 'react-select/animated';
 import { ResponsivePie } from '@nivo/pie';
 // Component
 import LoadingComponent from '../../common/LoadingComponent';
+// Type
+import { ITabMainComponentProps } from '@/types/component/tab/tabMain.types';
 
 const options = [
   { value: 'default', label: '큐 타입' },
@@ -25,7 +27,15 @@ const capitalizeFirstLetter = (str: string) => {
   return str.charAt(0).toUpperCase() + str.slice(1);
 };
 
-const RecordCardComponent = (props) => {
+const RecordCardComponent = (props: {
+  win: number;
+  data: any[];
+  curIdx: number;
+  summary: any[][];
+  matchId: string;
+  winner: any[];
+  loser: any[];
+}) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const openDetail = () => {
@@ -34,14 +44,14 @@ const RecordCardComponent = (props) => {
 
   return (
     <>
-      <S.RecordCard $win={props.win}>
+      <S.RecordCard $win={props.win === 1 ? true : false}>
         <div className="record-info">
           <div className="left-section">
             <div className="area-1">
               <p className="win">{props.win ? '승리' : '패배'}</p>
               <p>솔로랭크</p>
               <p>{props.data[0].play_duration}</p>
-              <p>{props.data[props.curIdx].play_time}</p>
+              <p>{props.data[`${props.curIdx}`].play_time}</p>
             </div>
             <div className="area-2">
               <div className="champ">
@@ -212,7 +222,11 @@ const RecordCardComponent = (props) => {
             onClick={openDetail}
           />
         </div>
-        <button onClick={() => {location.href='/arena/' + props.matchId}}/>
+        <button
+          onClick={() => {
+            location.href = '/arena/' + props.matchId;
+          }}
+        />
       </S.RecordCard>
       <div className={`start ${isOpen && `end`}`}>
         {isOpen && (
@@ -352,7 +366,7 @@ const RecordCardComponent = (props) => {
                 </div>
               ))}
             </S.TeamDetail>
-            <S.TeamDetail>
+            <S.TeamDetail $win={false}>
               <div className="title">
                 <p>패배</p>
               </div>
@@ -494,8 +508,10 @@ const RecordCardComponent = (props) => {
   );
 };
 
-const TabMainComponent = ({ data, piedata }) => {
-  console.log('data: ', data);
+const TabMainComponent: React.FC<ITabMainComponentProps> = ({
+  data,
+  piedata,
+}) => {
   if (data == null) {
     return <LoadingComponent white={false} />;
   }
@@ -629,7 +645,7 @@ const TabMainComponent = ({ data, piedata }) => {
             </div>
             <div className="recent-played">
               <p className="sub-title">플레이한 챔피언&nbsp;</p>
-              {data.profile.champions.length != 0 ? (
+              {data.profile.champions.length > 0 ? (
                 data.profile.champions.map((e, i) => (
                   <div className="most-champ" key={`current_Card_Champ_${i}`}>
                     <img
@@ -653,7 +669,7 @@ const TabMainComponent = ({ data, piedata }) => {
             <div className="favo-position">
               <p className="sub-title">선호 포지션</p>
               <div className="position-area">
-                {data.profile.positions.length != 0 ? (
+                {data.profile.positions.length > 0 ? (
                   data.profile.positions.map((e, i) => (
                     <div className="line" key={`positions_${i}`}>
                       <S.LineGraph

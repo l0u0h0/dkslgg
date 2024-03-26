@@ -150,8 +150,9 @@ export interface IFormatRecordData {
   duoPlayer: any[][];
   recent: IRecentDataType;
   match_histories: {
+    matchId: string;
     win: number;
-    cur: undefined;
+    cur: number;
     summary: {
       name: string;
       champ: string;

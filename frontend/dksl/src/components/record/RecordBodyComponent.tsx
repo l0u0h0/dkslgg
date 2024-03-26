@@ -5,6 +5,8 @@ import TabMainComponent from './tabContent/TabMainComponent';
 import TabAnalyzeComponent from './tabContent/TabAnalyzeComponent';
 import TabGroupComponent from './tabContent/TabGroupComponent';
 import TabReviewComponent from './tabContent/TabReviewComponent';
+// type
+import { RecordBodyProps } from '@/types/component/record.types';
 
 const RecordBodyComponent = (props: RecordBodyProps) => {
   return (
@@ -51,7 +53,9 @@ const RecordBodyComponent = (props: RecordBodyProps) => {
               image={props.getByteToImage}
             />
           )}
-          {props.tab == 3 && <TabReviewComponent evaluateeName={props.searchSummonerName} />}
+          {props.tab == 3 && (
+            <TabReviewComponent evaluateeName={props.searchSummonerName} />
+          )}
         </div>
       </S.TabLayout>
     </S.RecordLayout>
