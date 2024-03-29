@@ -61,7 +61,7 @@ const UserContainer = () => {
         iconColor: 'var(--maincolor-depth1)',
         confirmButtonColor: 'var(--maincolor-depth1)',
       });
-      navigate('/');
+      navigate('/user/signin');
     }
   }, [navigate, signup]);
 
@@ -97,7 +97,7 @@ const UserContainer = () => {
 
   return (
     <>
-      {path == '/user/signin' ? (
+      {path === '/user/signin' ? (
         // 로그인 페이지
         <SigninComponent
           getter={signin}

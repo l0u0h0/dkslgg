@@ -57,7 +57,6 @@ const SignupComponent: React.FC<{
       });
     }
   }, []);
-  console.log('HI');
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -161,7 +160,7 @@ const SignupComponent: React.FC<{
           <input
             type="text"
             name="name"
-            onChange={(e) => onChange(e)}
+            onChange={onChange}
             placeholder="리그오브레전드 닉네임을 입력하세요."
             style={{
               borderBottom: checked.name ? '2px solid green' : '2px solid red',

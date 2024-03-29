@@ -1,18 +1,15 @@
 import { useCallback, useRef, useEffect } from 'react';
 
 const useDebounce = <T extends (...args: any[]) => any>(
-  e: any,
   callback: T,
   delay: number
 ) => {
   const callbackRef = useRef<T>(callback);
 
-  const debouncedCallback = useCallback(
-    (e: any) => {
-      callbackRef.current(e);
-    },
-    [callbackRef]
-  );
+  const debouncedCallback = useCallback(() => {
+    console.log(callbackRef.current);
+    callbackRef.current();
+  }, [callbackRef]);
 
   useEffect(() => {
     callbackRef.current = callback;
@@ -20,9 +17,9 @@ const useDebounce = <T extends (...args: any[]) => any>(
 
   useEffect(() => {
     const handler = setTimeout(() => {
-      debouncedCallback(e);
+      debouncedCallback();
     }, delay);
-
+    console.log(delay);
     return () => {
       clearTimeout(handler);
     };
