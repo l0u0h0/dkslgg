@@ -40,7 +40,7 @@ const InputFieldsForm: React.FC<{
       phone: false,
       email: false,
     });
-
+    console.log(debouncedValues);
     useEffect(() => {
       let checks = { ...checked };
       let result = false;
@@ -160,7 +160,7 @@ const SignupComponent: React.FC<SignupComponentProps> = ({
 }) => {
   const num = useMemo(() => Math.floor(Math.random() * 5) + 1, []);
   const infoElement = useRef<HTMLImageElement>(null);
-  const [inputValues, setInputValues] = useState({ ...getter, type: '' });
+  const [inputValues, setInputValues] = useState({ ...getter });
   const debouncedValues = useDebounce<SignupFields>(inputValues, 800);
 
   useEffect(() => {
@@ -194,10 +194,9 @@ const SignupComponent: React.FC<SignupComponentProps> = ({
       setInputValues({
         ...inputValues,
         [name]: value,
-        type: name,
       });
     },
-    [setInputValues]
+    [debouncedValues]
   );
 
   return (
