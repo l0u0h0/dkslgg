@@ -15,7 +15,7 @@ import GroupContainer from './pages/GroupContainer.jsx';
 import LbtiContainer from './pages/LbtiContainer.jsx';
 import LoadingComponent from './components/common/LoadingComponent.jsx';
 import NotFound from './components/common/NotFound.jsx';
-import ArenaContainer from './pages/ArenaContainer.jsx';     
+import ArenaContainer from './pages/ArenaContainer.jsx';
 // Styled
 import GlobalStyles from './styles/globalStyles.style.js';
 
