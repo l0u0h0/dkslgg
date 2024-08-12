@@ -1,0 +1,178 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "jalnan";
+  src: url(/fonts/Jalnan.ttf) format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "JalnanGothic";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_231029@1.1/JalnanGothic.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@layer components {
+  .bg-primary {
+    @apply bg-zinc-100 dark:bg-zinc-800;
+  }
+
+  .title-font {
+    @apply font-jalnan dark:text-zinc-200;
+  }
+
+  .btn-modern {
+    @apply inline-flex text-white dark:text-zinc-200 bg-zinc-700 dark:bg-zinc-700 border-0 py-2 px-6 focus:outline-none hover:bg-zinc-400 hover:text-zinc-100 hover:dark:bg-zinc-500 hover:dark:text-zinc-200 rounded text-lg font-jalnangothic hover:scale-105;
+
+    &:disabled {
+      @apply inline-flex text-white dark:text-zinc-200 bg-zinc-700 dark:bg-zinc-700 border-0 py-2 px-6 rounded text-lg font-jalnangothic cursor-not-allowed hover:scale-100;
+    }
+  }
+
+  .project-card {
+    @apply flex flex-col m-1 rounded-md w-80 sm:w-96 md:w-80 lg:w-72
+    transition duration-300 transform border-2 border-zinc-200
+    hover:scale-[102.5%] hover:shadow-md
+    bg-zinc-100
+    hover:bg-zinc-200
+    dark:border-zinc-700
+    dark:bg-zinc-700
+    dark:hover:shadow-gray-400/50
+    dark:hover:bg-zinc-600;
+  }
+
+  .footer-icon {
+    @apply w-6 h-6 hover:scale-110 transition;
+  }
+}
+
+@layer base {
+  ul,
+  ol {
+    list-style: revert;
+  }
+}
+
+* {
+  transition: background 0.2s ease;
+}
+
+body {
+  transition: overflow 0.2s ease;
+
+  & .wmde-markdown {
+    background-color: transparent;
+  }
+
+  & .w-md-editor {
+    background-color: transparent;
+    border: 4px solid;
+  }
+
+  & .w-md-editor-toolbar {
+    background-color: transparent;
+    padding: 10px;
+    margin-bottom: 12px;
+    border-bottom: 2px solid;
+
+    & button {
+      height: 28px !important;
+
+      &:hover {
+        background-color: rgb(73 73 73 / 50%) !important;
+        color: #595959 !important;
+      }
+    }
+
+    & svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  & .w-md-editor-content {
+  }
+
+  & .w-md-editor-text-pre > code,
+  & .w-md-editor-text-input {
+    font-size: 1.25rem !important;
+    line-height: 24px !important;
+  }
+
+  & .w-md-editor-preview {
+    & p {
+      display: flex;
+      width: 100%;
+
+      & img {
+        margin: auto;
+      }
+    }
+
+    & hr {
+      @apply bg-zinc-700 dark:bg-zinc-200;
+    }
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply text-zinc-900 dark:text-zinc-100;
+}
+
+a {
+  @apply border-b-2 border-transparent text-zinc-600 hover:text-zinc-700 dark:text-zinc-400 hover:dark:text-zinc-500 duration-200 hover:border-zinc-700 hover:dark:border-zinc-500 transition-all;
+}
+
+footer {
+  @apply text-gray-600 dark:text-white
+  bg-gray-200 dark:bg-gray-600/50;
+}
+
+p {
+  @apply text-zinc-600 dark:text-zinc-300;
+}
+
+ul {
+  @apply text-zinc-600 dark:text-zinc-300;
+}
+
+li {
+  @apply whitespace-normal break-words hover:text-zinc-900 hover:dark:text-zinc-50/100 my-1 duration-200;
+}
+
+input {
+  @apply outline-none;
+}
+
+input:focus-visible {
+  @apply outline-none;
+}
+
+body::-webkit-scrollbar,
+div::-webkit-scrollbar {
+  height: 0rem;
+  background-color: rgb(244 244 245 / 0.1);
+}
+
+body::-webkit-scrollbar-thumb,
+div::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: rgb(161 161 170 / 1);
+  background-clip: padding-box;
+  border: 4px solid transparent;
+}
+
+body:dark::-webkit-scrollbar-thumb,
+div:dark::-webkit-scrollbar-thumb {
+  background-color: rgb(63 63 70 / 1);
+}
