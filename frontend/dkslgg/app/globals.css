@@ -27,7 +27,7 @@
   }
 
   .btn-modern {
-    @apply inline-flex text-white dark:text-zinc-200 bg-zinc-700 dark:bg-zinc-700 border-0 py-2 px-6 focus:outline-none hover:bg-zinc-400 hover:text-zinc-100 hover:dark:bg-zinc-500 hover:dark:text-zinc-200 rounded text-lg font-jalnangothic hover:scale-105;
+    @apply inline-flex text-white dark:text-zinc-200 bg-zinc-700 dark:bg-zinc-700 border-0 py-2 px-6 focus:outline-none hover:bg-zinc-400 hover:text-zinc-100 hover:dark:bg-zinc-500 hover:dark:text-zinc-200 rounded text-base font-jalnangothic hover:scale-105 transition duration-150;
 
     &:disabled {
       @apply inline-flex text-white dark:text-zinc-200 bg-zinc-700 dark:bg-zinc-700 border-0 py-2 px-6 rounded text-lg font-jalnangothic cursor-not-allowed hover:scale-100;
@@ -64,60 +64,6 @@
 
 body {
   transition: overflow 0.2s ease;
-
-  & .wmde-markdown {
-    background-color: transparent;
-  }
-
-  & .w-md-editor {
-    background-color: transparent;
-    border: 4px solid;
-  }
-
-  & .w-md-editor-toolbar {
-    background-color: transparent;
-    padding: 10px;
-    margin-bottom: 12px;
-    border-bottom: 2px solid;
-
-    & button {
-      height: 28px !important;
-
-      &:hover {
-        background-color: rgb(73 73 73 / 50%) !important;
-        color: #595959 !important;
-      }
-    }
-
-    & svg {
-      width: 20px;
-      height: 20px;
-    }
-  }
-
-  & .w-md-editor-content {
-  }
-
-  & .w-md-editor-text-pre > code,
-  & .w-md-editor-text-input {
-    font-size: 1.25rem !important;
-    line-height: 24px !important;
-  }
-
-  & .w-md-editor-preview {
-    & p {
-      display: flex;
-      width: 100%;
-
-      & img {
-        margin: auto;
-      }
-    }
-
-    & hr {
-      @apply bg-zinc-700 dark:bg-zinc-200;
-    }
-  }
 }
 
 h1,

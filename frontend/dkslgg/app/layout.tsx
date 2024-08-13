@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/common/Header";
-import Footer from "@/components/common/Footer";
+import HeaderContainer from "@/app/components/Header/HeaderContainer";
+import Footer from "@/app/components/Footer/Footer";
 import Providers from "../provider/ThemeProvider";
 import IntegrateMSW from "@/provider/MSWProvider";
 
@@ -26,7 +26,7 @@ export default function RootLayout({
       >
         <IntegrateMSW>
           <Providers>
-            <Header />
+            <HeaderContainer />
             {children}
             <Footer />
           </Providers>
