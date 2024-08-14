@@ -1,7 +1,9 @@
+import SearchContainer from "./components/Main/Search/SearchContainer";
+
 export default async function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-[120px]">
-      {/* <HomeContainer /> */}
+    <main className="w-full h-full flex flex-col">
+      <SearchContainer />
     </main>
   );
 }

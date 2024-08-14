@@ -122,3 +122,19 @@ body:dark::-webkit-scrollbar-thumb,
 div:dark::-webkit-scrollbar-thumb {
   background-color: rgb(63 63 70 / 1);
 }
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+
+.typing {
+  animation: typing 2s steps(21), blink 0.5s step-end infinite alternate;
+}

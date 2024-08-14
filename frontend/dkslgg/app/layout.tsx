@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body
-        className={`${inter.className} bg-primary w-screen !overflow-x-hidden`}
+        className={`${inter.className} bg-primary w-screen h-screen !overflow-x-hidden`}
       >
         <IntegrateMSW>
           <Providers>
