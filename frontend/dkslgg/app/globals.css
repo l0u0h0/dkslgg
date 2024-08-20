@@ -85,7 +85,7 @@ footer {
 }
 
 p {
-  @apply text-zinc-600 dark:text-zinc-300;
+  @apply text-zinc-700 dark:text-zinc-200;
 }
 
 ul {
@@ -97,7 +97,7 @@ li {
 }
 
 input {
-  @apply outline-none;
+  @apply bg-zinc-100 text-zinc-900 outline-none;
 }
 
 input:focus-visible {

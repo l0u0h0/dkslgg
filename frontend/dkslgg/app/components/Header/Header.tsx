@@ -23,7 +23,7 @@ export default function Header() {
         </Link>
       </nav>
       <nav className="basis-1/4 md:ml-auto flex flex-wrap gap-4 items-center justify-center">
-        <Button size="base" text="로그인" />
+        <Button size="base">로그인</Button>
         <DarkModeToggleButton />
       </nav>
     </header>
