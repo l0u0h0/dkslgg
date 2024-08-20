@@ -22,10 +22,10 @@ export default function SearchBar({
         placeholder={placeholder}
       />
       <button
-        className="relative w-7 right-9 hover:scale-110 transition-all duration-200"
+        className="relative w-7 right-10 hover:scale-110 transition-all duration-200"
         onClick={() => onSearch(ref && ref.current ? ref.current.value : null)}
       >
-        <Image src={SearchSvg} alt="SearchBtn" />
+        <Image src={SearchSvg} fill alt="SearchBtn" />
       </button>
     </div>
   );
