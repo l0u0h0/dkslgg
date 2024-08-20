@@ -76,7 +76,7 @@ h6 {
 }
 
 a {
-  @apply border-b-2 border-transparent text-zinc-600 hover:text-zinc-700 dark:text-zinc-400 hover:dark:text-zinc-500 duration-200 hover:border-zinc-700 hover:dark:border-zinc-500 transition-all;
+  @apply border-b-2 border-transparent text-zinc-600 hover:text-zinc-700 dark:text-zinc-300 hover:dark:text-zinc-200 duration-200 hover:border-zinc-700 hover:dark:border-zinc-500 transition-all;
 }
 
 footer {
@@ -124,8 +124,11 @@ div:dark::-webkit-scrollbar-thumb {
 }
 
 @keyframes typing {
-  from {
+  0% {
     width: 0;
+  }
+  66% {
+    width: 100%;
   }
 }
 
@@ -136,5 +139,6 @@ div:dark::-webkit-scrollbar-thumb {
 }
 
 .typing {
-  animation: typing 2s steps(21), blink 0.5s step-end infinite alternate;
+  animation: typing 3s steps(21) alternate infinite,
+    blink 0.5s step-end infinite alternate;
 }

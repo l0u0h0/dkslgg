@@ -7,7 +7,7 @@ import Button from "../Common/Button";
 
 export default function Header() {
   return (
-    <header className="w-full min-w-fit sm:min-w-[640px] max-h-28 text-gray-600 flex flex-wrap p-6 lg:px-32 md:px-20 flex-col md:flex-row justify-center items-center">
+    <header className="w-full min-w-fit sm:min-w-[640px] max-h-28 text-gray-600 flex flex-wrap p-6 lg:px-32 md:px-20 flex-col md:flex-row justify-center items-center drop-shadow-md">
       <div className="flex h-full basis-1/5 justify-center">
         <Link
           className="relative flex w-12 h-full hover:scale-105 border-0"
