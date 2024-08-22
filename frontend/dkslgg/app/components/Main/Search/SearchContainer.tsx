@@ -22,13 +22,13 @@ export default function SearchContainer() {
 
   return (
     <section
-      className="w-full h-[40rem] bg-cover bg-center flex flex-col justify-center items-center bg-gradient-conic"
+      className="w-full min-h-[40rem] bg-cover bg-center flex flex-col justify-center items-center bg-gradient-conic"
       style={{
         backgroundImage: `url(${BG_URL})`,
       }}
     >
       <div className="w-fit h-fit m-10 font-bold grid place-items-center drop-shadow-xl">
-        <h1 className="typing w-full pt-2 whitespace-nowrap overflow-x-hidden border-r-2 font-jalnangothic text-4xl text-zinc-50 tracking-wider">
+        <h1 className="typing w-full pt-2 whitespace-nowrap overflow-hidden border-r-4 font-jalnangothic text-4xl text-zinc-50 tracking-wider">
           나의 전적을 분석해보세요.
         </h1>
       </div>
