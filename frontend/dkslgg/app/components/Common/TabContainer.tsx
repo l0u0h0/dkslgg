@@ -27,7 +27,7 @@ export default function TabContainer({
             </button>
           ) : (
             <button
-              className="bg-zinc-700 dark:bg-zinc-200 text-zinc-100 dark:text-zinc-700 px-6 py-2 rounded-lg"
+              className="bg-zinc-700 dark:bg-zinc-200 text-zinc-100 dark:text-zinc-700 px-6 py-2 rounded-lg underline underline-offset-4"
               key={`tab_key-${i}`}
               disabled
             >

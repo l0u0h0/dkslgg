@@ -27,10 +27,10 @@
   }
 
   .btn-modern {
-    @apply inline-flex text-white dark:text-zinc-200 bg-zinc-700 dark:bg-zinc-700 border-0 py-2 px-6 focus:outline-none hover:bg-zinc-400 hover:text-zinc-100 hover:dark:bg-zinc-500 hover:dark:text-zinc-200 rounded text-base font-jalnangothic hover:scale-105 transition duration-150;
+    @apply inline-flex text-zinc-200 dark:text-zinc-800 bg-zinc-700 dark:bg-zinc-300 border-0 py-2 px-6 focus:outline-none hover:bg-zinc-400 hover:text-zinc-100 hover:dark:bg-zinc-500 hover:dark:text-zinc-200 rounded text-base font-jalnangothic hover:scale-105 transition duration-150;
 
     &:disabled {
-      @apply inline-flex text-white dark:text-zinc-200 bg-zinc-700 dark:bg-zinc-700 border-0 py-2 px-6 rounded text-lg font-jalnangothic cursor-not-allowed hover:scale-100;
+      @apply inline-flex text-zinc-200 dark:text-zinc-800 bg-zinc-700 dark:bg-zinc-300 border-0 py-2 px-6 rounded text-lg font-jalnangothic cursor-not-allowed hover:scale-100;
     }
   }
 
