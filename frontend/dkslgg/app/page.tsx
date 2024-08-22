@@ -4,7 +4,7 @@ import TaggingContainer from "./components/Main/Tagging/TaggingContainer";
 
 export default async function Home() {
   return (
-    <main className="w-full h-full flex flex-col">
+    <main className="w-full h-full">
       <SearchContainer />
       <TaggingContainer />
       <RankingContainer />

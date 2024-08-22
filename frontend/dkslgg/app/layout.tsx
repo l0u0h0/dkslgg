@@ -9,9 +9,12 @@ import IntegrateMSW from "@/provider/MSWProvider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "dkslgg",
-  description: "",
-  icons: "images/dkslhead.svg",
+  title: {
+    template: "%s | dkslgg",
+    default: "dkslgg",
+  },
+  description: "League Of Legends 전적 조회 서비스.",
+  icons: "/images/dkslhead.svg",
 };
 
 export default function RootLayout({
