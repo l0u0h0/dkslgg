@@ -13,13 +13,13 @@ export default function ProfileContainer() {
 
   return (
     <section
-      className="w-full min-h-96 bg-cover bg-center flex flex-col justify-center items-center relative"
+      className="w-full min-h-96 bg-cover bg-center flex justify-center relative"
       style={{
         backgroundImage: `url(${BG_URL})`,
       }}
     >
       <div className="absolute top-0 left-0 right-0 bottom-0 bg-primary bg-opacity-50 dark:bg-opacity-50 pointer-events-none"></div>
-      <div className="relative z-10 flex gap-8 items-center">
+      <div className="w-2/3 relative z-10 flex gap-8 items-center">
         <div className="w-40 h-40 relative rounded-full border-yellow-300 border-2 overflow-hidden">
           <Image
             referrerPolicy="no-referrer"
@@ -32,7 +32,7 @@ export default function ProfileContainer() {
         <div className="flex flex-col gap-4">
           <div className="flex items-center">
             <h1 className="font-jalnangothic text-4xl mr-4">NickName</h1>
-            <div className="w-32 h-fit absolute -right-32">
+            <div className="w-24 h-fit">
               <Image
                 referrerPolicy="no-referrer"
                 className="object-cover"
