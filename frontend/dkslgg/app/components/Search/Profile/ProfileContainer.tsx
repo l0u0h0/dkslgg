@@ -5,6 +5,7 @@ import Button from "../../Common/Button";
 import Image from "next/image";
 import DummyProfile from "@/public/images/dkslhead.svg";
 import DummyRank from "@/public/images/rank-icons/challenger.png";
+import Tag from "../../Common/Tag";
 
 export default function ProfileContainer() {
   const BG_URL = useMemo(() => {
@@ -13,14 +14,14 @@ export default function ProfileContainer() {
 
   return (
     <section
-      className="w-full min-h-96 bg-cover bg-center flex justify-center relative"
+      className="w-full min-h-96 px-[20%] bg-cover bg-center flex justify-center relative"
       style={{
         backgroundImage: `url(${BG_URL})`,
       }}
     >
       <div className="absolute top-0 left-0 right-0 bottom-0 bg-primary bg-opacity-50 dark:bg-opacity-50 pointer-events-none"></div>
-      <div className="w-2/3 relative z-10 flex gap-8 items-center">
-        <div className="w-40 h-40 relative rounded-full border-yellow-300 border-2 overflow-hidden">
+      <div className="w-full relative z-10 flex gap-8 items-center">
+        <div className="w-36 h-36 relative rounded-full border-yellow-300 border-2 overflow-hidden">
           <Image
             referrerPolicy="no-referrer"
             className="object-cover"
@@ -30,8 +31,11 @@ export default function ProfileContainer() {
           />
         </div>
         <div className="flex flex-col gap-4">
-          <div className="flex items-center">
-            <h1 className="font-jalnangothic text-4xl mr-4">NickName</h1>
+          <div className="flex items-end">
+            <div>
+              <h1 className="font-jalnangothic text-4xl mr-4">NickName</h1>
+              <Tag text="TEST" color="red" />
+            </div>
             <div className="w-24 h-fit">
               <Image
                 referrerPolicy="no-referrer"
@@ -41,7 +45,6 @@ export default function ProfileContainer() {
               />
             </div>
           </div>
-          <div>LBTI</div>
           <div>
             <Button size="base" onClick={() => location.reload()}>
               전적 갱신
