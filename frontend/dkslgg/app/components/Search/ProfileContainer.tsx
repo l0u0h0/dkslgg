@@ -1,11 +1,11 @@
 "use client";
 
 import { useMemo } from "react";
-import Button from "../../Common/Button";
+import Button from "../Common/Button";
 import Image from "next/image";
 import DummyProfile from "@/public/images/dkslhead.svg";
 import DummyRank from "@/public/images/rank-icons/challenger.png";
-import Tag from "../../Common/Tag";
+import Tag from "../Common/Tag";
 
 export default function ProfileContainer() {
   const BG_URL = useMemo(() => {
@@ -32,9 +32,9 @@ export default function ProfileContainer() {
         </div>
         <div className="flex flex-col gap-4">
           <div className="flex items-end">
-            <div>
+            <div className="flex flex-col gap-2">
               <h1 className="font-jalnangothic text-4xl mr-4">NickName</h1>
-              <Tag text="TEST" color="red" />
+              <Tag text="LBTI" color="red" />
             </div>
             <div className="w-24 h-fit">
               <Image

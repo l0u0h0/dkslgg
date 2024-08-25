@@ -35,15 +35,13 @@
   }
 
   .card-view {
-    @apply flex flex-col m-2 rounded-lg
-    border-2 border-zinc-400
-    bg-zinc-200
-    dark:border-zinc-500
-    dark:bg-zinc-600;
+    @apply rounded-lg py-4
+    bg-primary
+    border-2 border-zinc-300 dark:border-zinc-600;
   }
 
   .card-title {
-    @apply pl-4 pb-4 border-b-2 border-zinc-700 dark:border-zinc-300 text-xl font-bold font-jalnan;
+    @apply pl-4 pb-4 border-b-2 border-zinc-300 dark:border-zinc-600 text-xl font-jalnan;
   }
 
   .footer-icon {
@@ -76,7 +74,7 @@ h6 {
 }
 
 a {
-  @apply border-b-2 border-transparent text-zinc-600 hover:text-zinc-700 dark:text-zinc-300 hover:dark:text-zinc-200 duration-200 hover:border-zinc-700 hover:dark:border-zinc-500 transition-all;
+  @apply border-b-2 border-transparent text-zinc-600 hover:text-zinc-700 dark:text-zinc-300 hover:dark:text-zinc-200 duration-200 hover:border-zinc-700 hover:dark:border-zinc-300 transition-all;
 }
 
 footer {

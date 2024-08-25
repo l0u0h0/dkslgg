@@ -10,7 +10,7 @@ export default function PlayerRanking({
     <div className="w-full flex flex-col gap-4 px-4">
       {data.map((e, i) => (
         <div
-          className="w-full flex border-b-[1px] text-lg"
+          className="w-full flex border-b-[1px] border-zinc-700 dark:border-zinc-200 text-lg"
           key={`player_rank_data_row_${i}`}
         >
           <p className="basis-[10%] font-jalnangothic text-center">{i + 1}</p>

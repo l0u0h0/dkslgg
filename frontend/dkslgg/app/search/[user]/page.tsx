@@ -1,4 +1,5 @@
-import ProfileContainer from "@/app/components/Search/Profile/ProfileContainer";
+import SearchContainer from "@/app/components/Search/SearchContainer";
+import ProfileContainer from "@/app/components/Search/ProfileContainer";
 
 interface IParams {
   params: {
@@ -19,6 +20,7 @@ export default async function User({ params }: IParams) {
   return (
     <main className="w-full h-full">
       <ProfileContainer />
+      <SearchContainer />
     </main>
   );
 }

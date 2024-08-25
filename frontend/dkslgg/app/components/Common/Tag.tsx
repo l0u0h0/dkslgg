@@ -15,7 +15,7 @@ const TAG_THEME: { [key: string]: string } = {
 export default function Tag({ text, color }: ITagProps) {
   return (
     <div
-      className={`inline-flex text-zinc-200 border-0 py-2 px-4 rounded-lg text-base font-jalnan tracking-wider ${TAG_THEME[color]}`}
+      className={`w-fit text-zinc-200 border-0 py-2 px-4 rounded-lg text-base font-jalnan tracking-wider ${TAG_THEME[color]}`}
     >
       {text}
     </div>
