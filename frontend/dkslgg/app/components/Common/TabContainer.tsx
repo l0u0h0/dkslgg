@@ -13,6 +13,10 @@ export default function TabContainer({
   setTabs,
   children,
 }: ITabContainerProps) {
+  const tabIndexHandler = (index: number) => () => {
+    setTabs(index);
+  };
+
   return (
     <div className="w-full">
       <div className="w-full flex py-4 gap-4 font-bold justify-center items-center drop-shadow-lg">
@@ -21,7 +25,7 @@ export default function TabContainer({
             <button
               className="px-6 py-2 rounded-lg"
               key={`tab_key-${i}`}
-              onClick={() => setTabs(i)}
+              onClick={tabIndexHandler(i)}
             >
               {e}
             </button>

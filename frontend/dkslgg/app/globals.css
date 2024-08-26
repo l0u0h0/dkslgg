@@ -19,7 +19,11 @@
 
 @layer components {
   .bg-primary {
-    @apply bg-zinc-100 dark:bg-zinc-800;
+    @apply bg-zinc-200 dark:bg-zinc-800;
+  }
+
+  .bg-secondary {
+    @apply bg-zinc-100 dark:bg-zinc-700;
   }
 
   .title-font {
@@ -36,8 +40,8 @@
 
   .card-view {
     @apply rounded-lg py-4
-    bg-primary
-    border-2 border-zinc-300 dark:border-zinc-600;
+    bg-secondary
+    border-0 border-zinc-300 dark:border-zinc-600;
   }
 
   .card-title {

@@ -8,7 +8,7 @@ export default function SearchContainer() {
   const [tabs, setTabs] = useState(0);
 
   return (
-    <section className="w-full flex justify-center">
+    <section className="w-full flex justify-center bg-secondary">
       <TabContainer
         items={["전적", "분석", "소속", "리뷰"]}
         tab={tabs}
