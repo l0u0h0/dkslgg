@@ -24,9 +24,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body
-        className={`${inter.className} bg-primary w-screen !overflow-x-hidden`}
-      >
+      <body className={`${inter.className} bg-primary w-screen`}>
         <IntegrateMSW>
           <Providers>
             <HeaderContainer />
