@@ -10,7 +10,7 @@ interface IParams {
 export async function generateMetadata({ params }: IParams) {
   const user = decodeURI(params.user);
   return {
-    title: `${user}`,
+    title: `${user} - 전적 조회`,
     description: `소환사 ${user}의 정보 조회 페이지`,
   };
 }
