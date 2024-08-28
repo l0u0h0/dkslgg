@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import RecordDetailCard from "./RecordDetailCard";
 
 const DDRAGON_VERSION = "14.16.1";
 
@@ -66,7 +67,7 @@ export default function RecordCard() {
   const [isDetailOpen, setIsDetailOpen] = useState(false);
 
   return (
-    <div className="w-full h-fit">
+    <div className="w-full h-fit flex flex-col gap-1">
       <div className="w-full h-28 pl-2 pr-6 bg-blue-500 dark:bg-blue-600 rounded-md">
         <div className="w-full h-full flex px-2 bg-primary !bg-opacity-80">
           {/* game detail */}
@@ -225,7 +226,7 @@ export default function RecordCard() {
               viewBox="0 -960 960 960"
               width="24"
               className={`dark:fill-zinc-200 hover:scale-125 transition-all duration-300 ${
-                isDetailOpen ? "rotate-180" : "rotate-0"
+                isDetailOpen ? "rotate-0" : "rotate-180"
               }`}
             >
               <path d="m296-345-56-56 240-240 240 240-56 56-184-184-184 184Z" />
@@ -233,10 +234,7 @@ export default function RecordCard() {
           </button>
         </div>
       </div>
-      <div className="w-full h-80">
-        <div></div>
-        <div></div>
-      </div>
+      <RecordDetailCard isDetailOpen={isDetailOpen} />
     </div>
   );
 }

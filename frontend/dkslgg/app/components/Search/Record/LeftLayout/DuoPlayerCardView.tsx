@@ -39,7 +39,7 @@ export default function DuoPlayerCardView() {
     <CardView title="&#128080; 함께 한 소환사들" lbti={null}>
       <div className="w-full px-6 py-6">
         <table className="w-full text-sm text-center border-collapse table-fixed">
-          <thead className="w-full font-jalnangothic">
+          <thead className="w-full font-jalnangothic text-xs">
             <tr className="w-full border-b-2 border-zinc-700 dark:border-zinc-200">
               <td className="w-1/2 pb-2">소환사</td>
               <td className="pb-2">게임</td>
