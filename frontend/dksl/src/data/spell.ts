@@ -1,3 +1,5 @@
+import { Spell } from '@/types/component/record.types';
+
 export const spell: Spell = {
   type: 'summoner',
   version: '13.19.1',
