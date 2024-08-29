@@ -120,7 +120,7 @@ function RecordDetailPlayer({ data }: { data: IRecordDetailPlayerProps }) {
             </p>
           </div>
           <div className="w-full flex justify-center">
-            <div className="w-2/3 h-4 flex bg-zinc-300 dark:bg-zinc-800 justify-end rounded-sm">
+            <div className="w-2/3 h-4 flex bg-zinc-300 dark:bg-zinc-800 justify-start rounded-sm">
               <span
                 className="bg-red-400 dark:bg-red-500"
                 style={{
@@ -128,7 +128,9 @@ function RecordDetailPlayer({ data }: { data: IRecordDetailPlayerProps }) {
                 }}
               ></span>
             </div>
-            <p className="absolute z-10 text-[.6rem] tracking-wide">12700</p>
+            <p className="absolute z-10 text-[.6rem] tracking-wide text-zinc-800 dark:text-zinc-100">
+              12700
+            </p>
           </div>
         </div>
       </div>
@@ -174,7 +176,6 @@ export default function RecordDetailCard({
           : {
               height: 0,
               opacity: 0,
-              animation: "0.6s ease-in-out loadEffectRemove",
             }
       }
     >

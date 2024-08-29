@@ -2,14 +2,13 @@
 
 interface ICardViewProps {
   title: string;
-  lbti: string | null;
   children: React.ReactNode;
 }
 
-export default function CardView({ title, lbti, children }: ICardViewProps) {
+export default function CardView({ title, children }: ICardViewProps) {
   return (
     <div className="card-view w-full">
-      <p className="card-title">{lbti ? `${lbti} ${title}` : title}</p>
+      <p className="card-title">{title}</p>
       {children}
     </div>
   );

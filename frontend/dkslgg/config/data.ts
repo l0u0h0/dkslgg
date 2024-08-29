@@ -141,7 +141,7 @@ export const DummyDetailData = {
       CS: 279,
       gold: "1.2만",
       ward: "31",
-      damage: 0.23,
+      damage: 0.5,
       champ: "Aatrox",
       spell_0_id: "SummonerBoost",
       spell_1_id: "SummonerFlash",

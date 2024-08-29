@@ -6,7 +6,7 @@ import DummyRank from "@/public/images/rank-icons/master.png";
 
 export default function TierCardView() {
   return (
-    <CardView title="&#127941; 티어" lbti={null}>
+    <CardView title="&#127941; 티어">
       <div className="w-full px-8 py-6 flex flex-col gap-4">
         <div>
           <p className="font-semibold">솔로 랭크</p>

@@ -69,7 +69,7 @@ export default function RecentCardView() {
   };
 
   return (
-    <CardView title="&#128202; 최근 게임 분석" lbti={null}>
+    <CardView title="&#128202; 최근 게임 분석">
       <div className="w-full flex p-2 gap-6">
         <div aria-label="recent-graph" className="basis-[30%]">
           <p className="ml-4 text-start text-zinc-500 dark:text-zinc-400">

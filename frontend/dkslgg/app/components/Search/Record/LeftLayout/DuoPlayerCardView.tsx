@@ -36,7 +36,7 @@ const DummyDuoPlayer = [
 
 export default function DuoPlayerCardView() {
   return (
-    <CardView title="&#128080; 함께 한 소환사들" lbti={null}>
+    <CardView title="&#128080; 함께 한 소환사들">
       <div className="w-full px-6 py-6">
         <table className="w-full text-sm text-center border-collapse table-fixed">
           <thead className="w-full font-jalnangothic text-xs">
