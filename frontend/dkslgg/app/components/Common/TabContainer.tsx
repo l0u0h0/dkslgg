@@ -23,7 +23,7 @@ export default function TabContainer({
         {items.map((e, i) =>
           tab !== i ? (
             <button
-              className="px-6 py-2 rounded-md"
+              className="px-6 py-2 rounded-md hover:bg-zinc-700 hover:dark:bg-zinc-200 hover:text-zinc-100 hover:dark:text-zinc-700"
               key={`tab_key-${i}`}
               onClick={tabIndexHandler(i)}
             >
