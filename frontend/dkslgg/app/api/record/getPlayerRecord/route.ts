@@ -1,11 +1,16 @@
+import { getProfileData } from "@/services/getRecordService";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(request: NextRequest) {
-  console.log(request.nextUrl.searchParams);
-  const response = await fetch(`${request.nextUrl.origin}/api/dummy/record`);
+  const response = await (
+    await fetch(`${request.nextUrl.origin}/api/dummy/record`)
+  ).json();
+
+  console.log(response.data.profile);
 
   return NextResponse.json({
     status: "SUCCESS",
-    data: await response.json(),
+    profile: getProfileData(response.data.profile),
+    records: "record",
   });
 }

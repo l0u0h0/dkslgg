@@ -587,69 +587,67 @@ export const DummyDetailData = {
 };
 
 export const DummyRecord = {
-  profile: [
-    {
-      summoner_name: "Hide on bush",
-      profile_icon_id: 6,
-      tier_name: "CHALLENGER",
-      queue_id: 420,
-      rank: 1,
-      wins: 197,
-      losses: 151,
-      current_season_summary_id:
-        "5dA097C13W5gg66X_GeX3iFy_ZFvqxQi1bMFd8I9IA5uYnwxvOLbAskzW0qdBLGXanX6LVoq42nUFg",
-      last_updated_at: "2023-10-03T20:14:17",
-      champions: [
-        {
-          queue_id: 420,
-          cnt: 14,
-          win_rate: 0.5,
-          kda: 1.9753011735831447,
-          champion_name: "Tristana",
-        },
-        {
-          queue_id: 420,
-          cnt: 4,
-          win_rate: 0.75,
-          kda: 3.727272727272727,
-          champion_name: "Lissandra",
-        },
-        {
-          queue_id: 420,
-          cnt: 4,
-          win_rate: 1,
-          kda: 8.166666666666666,
-          champion_name: "Yone",
-        },
-      ],
-      positions: [
-        {
-          queue_id: 420,
-          img: null,
-          win_rate: 0.5135,
-          kda: 2.4342981584455674,
-          cnt: 14,
-          line: "MIDDLE",
-        },
-        {
-          queue_id: 420,
-          img: null,
-          win_rate: 0.8,
-          kda: 1.6491228070175439,
-          cnt: 10,
-          line: "TOP",
-        },
-        {
-          queue_id: 420,
-          img: null,
-          win_rate: 1,
-          kda: 13.25,
-          cnt: 4,
-          line: "UTILITY",
-        },
-      ],
-    },
-  ],
+  profile: {
+    summoner_name: "Hide on bush",
+    profile_icon_id: 6,
+    tier_name: "CHALLENGER",
+    queue_id: 420,
+    rank: 1,
+    wins: 197,
+    losses: 151,
+    current_season_summary_id:
+      "5dA097C13W5gg66X_GeX3iFy_ZFvqxQi1bMFd8I9IA5uYnwxvOLbAskzW0qdBLGXanX6LVoq42nUFg",
+    last_updated_at: "2023-10-03T20:14:17",
+    champions: [
+      {
+        queue_id: 420,
+        cnt: 14,
+        win_rate: 0.5,
+        kda: 1.9753011735831447,
+        champion_name: "Tristana",
+      },
+      {
+        queue_id: 420,
+        cnt: 4,
+        win_rate: 0.75,
+        kda: 3.727272727272727,
+        champion_name: "Lissandra",
+      },
+      {
+        queue_id: 420,
+        cnt: 4,
+        win_rate: 1,
+        kda: 8.166666666666666,
+        champion_name: "Yone",
+      },
+    ],
+    positions: [
+      {
+        queue_id: 420,
+        img: null,
+        win_rate: 0.5135,
+        kda: 2.4342981584455674,
+        cnt: 14,
+        line: "MIDDLE",
+      },
+      {
+        queue_id: 420,
+        img: null,
+        win_rate: 0.8,
+        kda: 1.6491228070175439,
+        cnt: 10,
+        line: "TOP",
+      },
+      {
+        queue_id: 420,
+        img: null,
+        win_rate: 1,
+        kda: 13.25,
+        cnt: 4,
+        line: "UTILITY",
+      },
+    ],
+  },
   match_histories: [
     {
       level: 11,

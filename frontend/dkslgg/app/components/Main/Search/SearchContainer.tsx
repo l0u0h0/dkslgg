@@ -16,7 +16,7 @@ export default function SearchContainer() {
     } else if (word.includes("/")) {
       console.error("Wrong Search Word!");
     } else {
-      router.push("/");
+      router.push(`/search/${word}`);
     }
   };
 

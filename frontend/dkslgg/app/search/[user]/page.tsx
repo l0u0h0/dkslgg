@@ -23,13 +23,13 @@ const getPlayerRecord = async ({ params }: IParams) => {
     )
   ).json();
 
-  return response.data.data;
+  return response;
 };
 
 export default async function User({ params }: IParams) {
   const data = await getPlayerRecord({ params });
 
-  console.log(data.profile);
+  console.log(data);
   return (
     <main className="w-full h-full">
       <ProfileContainer profile={data.profile} />
