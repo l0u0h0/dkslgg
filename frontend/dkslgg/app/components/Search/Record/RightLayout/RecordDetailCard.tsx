@@ -31,6 +31,7 @@ function RecordDetailPlayer({ data }: { data: IRecordDetailPlayerProps }) {
       <div className="basis-1/3 flex justify-center items-center gap-1">
         <div className="relative w-8 h-8">
           <Image
+            sizes="2rem"
             fill
             className="object-contain rounded-md"
             referrerPolicy="no-referrer"
@@ -45,6 +46,7 @@ function RecordDetailPlayer({ data }: { data: IRecordDetailPlayerProps }) {
           <div className="flex flex-col">
             <div className="relative w-4 h-4">
               <Image
+                sizes="1rem"
                 fill
                 className="object-contain"
                 referrerPolicy="no-referrer"
@@ -54,6 +56,7 @@ function RecordDetailPlayer({ data }: { data: IRecordDetailPlayerProps }) {
             </div>
             <div className="relative w-4 h-4">
               <Image
+                sizes="1rem"
                 fill
                 className="object-contain"
                 referrerPolicy="no-referrer"
@@ -65,6 +68,7 @@ function RecordDetailPlayer({ data }: { data: IRecordDetailPlayerProps }) {
           <div className="flex flex-col">
             <div className="relative w-4 h-4">
               <Image
+                sizes="1rem"
                 fill
                 className="object-contain object-center"
                 referrerPolicy="no-referrer"
@@ -74,6 +78,7 @@ function RecordDetailPlayer({ data }: { data: IRecordDetailPlayerProps }) {
             </div>
             <div className="relative w-4 h-4">
               <Image
+                sizes="1rem"
                 fill
                 className="object-contain object-center"
                 referrerPolicy="no-referrer"
@@ -141,6 +146,7 @@ function RecordDetailPlayer({ data }: { data: IRecordDetailPlayerProps }) {
             className="relative w-4 h-4"
           >
             <Image
+              sizes="1rem"
               fill
               className="object-contain rounded-md"
               referrerPolicy="no-referrer"

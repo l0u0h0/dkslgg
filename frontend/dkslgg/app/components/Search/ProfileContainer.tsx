@@ -7,7 +7,18 @@ import DummyProfile from "@/public/images/dkslhead.svg";
 import DummyRank from "@/public/images/rank-icons/challenger.png";
 import Tag from "../Common/Tag";
 
-export default function ProfileContainer() {
+type ProfileDataType = {
+  name: string;
+  tier: string;
+  profile_icon_id: number;
+  last_updated_at: string;
+};
+
+interface IProfileContainerProps {
+  profile: ProfileDataType;
+}
+
+export default function ProfileContainer({ profile }: IProfileContainerProps) {
   const BG_URL = useMemo(() => {
     return `/images/bg/search_bg_${Math.floor(Math.random() * 6) + 1}.jpg`;
   }, []);
@@ -28,6 +39,7 @@ export default function ProfileContainer() {
             src={DummyProfile}
             alt="Profile Icon"
             fill
+            sizes='9rem'
           />
         </div>
         <div className="flex flex-col gap-4">

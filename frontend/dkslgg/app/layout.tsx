@@ -4,7 +4,6 @@ import "./globals.css";
 import HeaderContainer from "@/app/components/Header/HeaderContainer";
 import Footer from "@/app/components/Footer/Footer";
 import Providers from "../provider/ThemeProvider";
-import IntegrateMSW from "@/provider/MSWProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,13 +24,11 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body className={`${inter.className} bg-primary w-screen`}>
-        <IntegrateMSW>
-          <Providers>
-            <HeaderContainer />
-            {children}
-            <Footer />
-          </Providers>
-        </IntegrateMSW>
+        <Providers>
+          <HeaderContainer />
+          {children}
+          <Footer />
+        </Providers>
       </body>
     </html>
   );

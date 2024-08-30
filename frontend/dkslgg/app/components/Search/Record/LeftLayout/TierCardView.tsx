@@ -16,6 +16,7 @@ export default function TierCardView() {
                 referrerPolicy="no-referrer"
                 alt="rank-icon"
                 src={DummyRank}
+                priority
               />
             </div>
             <p className="text-xl font-jalnangothic tracking-wider">Matser</p>
@@ -29,6 +30,7 @@ export default function TierCardView() {
                 referrerPolicy="no-referrer"
                 alt="rank-icon"
                 src={DummyRank}
+                priority
               />
             </div>
             <p className="text-xl font-jalnangothic tracking-wider">Matser</p>
@@ -42,6 +44,7 @@ export default function TierCardView() {
                 referrerPolicy="no-referrer"
                 alt="rank-icon"
                 src={DummyRank}
+                priority
               />
             </div>
             <p className="text-xl font-jalnangothic tracking-wider">Matser</p>

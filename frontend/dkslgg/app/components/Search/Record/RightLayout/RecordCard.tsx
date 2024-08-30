@@ -82,6 +82,7 @@ export default function RecordCard() {
             <div className="basis-1/5 flex flex-col justify-center items-center gap-1">
               <div className="relative w-2/3 h-12">
                 <Image
+                  sizes="3rem"
                   fill
                   className="object-contain rounded-md"
                   referrerPolicy="no-referrer"
@@ -95,6 +96,7 @@ export default function RecordCard() {
               <div className="w-full flex">
                 <div className="basis-1/4 relative h-4">
                   <Image
+                    sizes="1rem"
                     fill
                     className="object-contain"
                     referrerPolicy="no-referrer"
@@ -104,6 +106,7 @@ export default function RecordCard() {
                 </div>
                 <div className="basis-1/4 relative h-4">
                   <Image
+                    sizes="1rem"
                     fill
                     className="object-contain"
                     referrerPolicy="no-referrer"
@@ -113,6 +116,7 @@ export default function RecordCard() {
                 </div>
                 <div className="basis-1/4 relative h-4">
                   <Image
+                    sizes="1rem"
                     fill
                     className="object-contain object-center"
                     referrerPolicy="no-referrer"
@@ -122,6 +126,7 @@ export default function RecordCard() {
                 </div>
                 <div className="basis-1/4 relative h-4">
                   <Image
+                    sizes="1rem"
                     fill
                     className="object-contain object-center"
                     referrerPolicy="no-referrer"
@@ -161,6 +166,7 @@ export default function RecordCard() {
                   className="basis-1/4 relative h-6"
                 >
                   <Image
+                    sizes="1.5rem"
                     fill
                     className="object-contain rounded-md"
                     referrerPolicy="no-referrer"
@@ -182,6 +188,7 @@ export default function RecordCard() {
                 <div className="flex gap-1" key={`Record Team Player_01_${i}`}>
                   <div className="relative w-4 h-4">
                     <Image
+                      sizes="1rem"
                       fill
                       className="object-contain rounded-sm"
                       referrerPolicy="no-referrer"
@@ -200,6 +207,7 @@ export default function RecordCard() {
                 <div className="flex gap-1" key={`Record Team Player_02_${i}`}>
                   <div className="relative w-4 h-4">
                     <Image
+                      sizes="1rem"
                       fill
                       className="object-contain rounded-sm"
                       referrerPolicy="no-referrer"

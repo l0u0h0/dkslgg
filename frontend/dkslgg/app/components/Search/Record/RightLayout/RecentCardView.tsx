@@ -113,6 +113,7 @@ export default function RecentCardView() {
               >
                 <div className="relative w-6 h-6">
                   <Image
+                    sizes="1.5rem"
                     fill
                     className="object-cover rounded-full"
                     referrerPolicy="no-referrer"

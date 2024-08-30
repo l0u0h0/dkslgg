@@ -1,5 +1,6 @@
 import SearchContainer from "@/app/components/Search/SearchContainer";
 import ProfileContainer from "@/app/components/Search/ProfileContainer";
+import { HOST } from "@/config";
 
 interface IParams {
   params: {
@@ -15,11 +16,23 @@ export async function generateMetadata({ params }: IParams) {
   };
 }
 
+const getPlayerRecord = async ({ params }: IParams) => {
+  const response = await (
+    await fetch(
+      `${HOST}/api/record/getPlayerRecord?user=${decodeURI(params.user)}`
+    )
+  ).json();
+
+  return response.data.data;
+};
+
 export default async function User({ params }: IParams) {
-  console.log(params);
+  const data = await getPlayerRecord({ params });
+
+  console.log(data.profile);
   return (
     <main className="w-full h-full">
-      <ProfileContainer />
+      <ProfileContainer profile={data.profile} />
       <SearchContainer />
     </main>
   );
