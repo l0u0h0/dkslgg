@@ -108,12 +108,12 @@ export default function RecentCardView() {
           <div className="w-full flex flex-col gap-4 pt-4">
             {DummyChampions.map((e, i) => (
               <div
-                className="w-full flex gap-[.25rem] items-center text-xs"
+                className="w-full flex gap-[.5rem] items-center text-xs"
                 key={`Recent-Played-Champ-Row_${i}`}
               >
-                <div className="relative w-6 h-6">
+                <div className="relative w-7 h-7">
                   <Image
-                    sizes="1.5rem"
+                    sizes="1.75rem"
                     fill
                     className="object-cover rounded-full"
                     referrerPolicy="no-referrer"
